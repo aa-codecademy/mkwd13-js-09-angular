@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Person } from './models/person.model';
 import { last } from 'rxjs';
+import { Parent } from './components/parent/parent';
 
 // const test = 'random string';
 
@@ -13,6 +14,7 @@ enum Course {
   selector: 'app-root', //This is the selector we use when adding this component in other html files
   templateUrl: './app.html', //This is the url to the template for this component
   styleUrl: './app.scss', //This is the url to the scss file for this component
+  imports: [Parent], //We need to import other components before we can use them in the template
 })
 export class App {
   title = 'STARTER G1';
