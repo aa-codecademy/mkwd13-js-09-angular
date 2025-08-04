@@ -1,0 +1,7 @@
+.card {
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px gray;
+  height: 400px;
+  width: 400px;
+  background-color: lightcoral;
+}

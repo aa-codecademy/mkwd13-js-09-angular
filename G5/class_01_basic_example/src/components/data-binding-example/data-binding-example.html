@@ -1,0 +1,53 @@
+<div>
+  <h3>Data Binding Example</h3>
+
+  <div>
+    <h4>Interpolation Binding (One-way binding)</h4>
+    <p>Name: {{ name }}</p>
+    <p>Age: {{ age }}</p>
+    <p>Is Active: {{ isActive ? "Yes" : "No" }}</p>
+    <p>Expression: {{ 2 + 2 }} = 4</p>
+  </div>
+
+  <div>
+    <h4>Property Binding</h4>
+    <!-- Do not use the following way of binding with properties -->
+    <!-- <img src="{{ imageUrl }}" alt="Image of something" /> -->
+
+    <!-- Use this way: -->
+    <img
+      [src]="imageUrl"
+      alt="Image of something"
+      [height]="imageHeight"
+      [width]="imageWidth"
+      [style.border]="'1px solid black'"
+    />
+  </div>
+
+  <div>
+    <h4>Event Binding</h4>
+    <div>
+      <button (click)="handleClick()">Click me!</button>
+      <p>Clicked: {{ clickCount }} times</p>
+
+      <input
+        type="text"
+        placeholder="Type something..."
+        (input)="handleInput($event)"
+      />
+      <p>Input value: {{ inputValue }}</p>
+    </div>
+  </div>
+
+  <div>
+    <h4>Two-way Binding</h4>
+    <div>
+      <input
+        type="text"
+        [(ngModel)]="twoWayExample"
+        placeholder="Two way binding example"
+      />
+      <p>2-way binding result: {{ twoWayExample }}</p>
+    </div>
+  </div>
+</div>

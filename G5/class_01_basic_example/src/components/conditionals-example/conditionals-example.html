@@ -1,0 +1,55 @@
+<!-- <h2>Old Conditional</h2>
+
+<h3>Random: {{ random }}</h3> -->
+
+<!-- <h4 *ngIf="random >= 18; else child">You are mature</h4>
+
+<ng-template #child>
+  <p>You are a child</p>
+</ng-template> -->
+
+<!-- <h2>New Conditional</h2>
+
+<h3>Random: {{ random }}</h3> -->
+
+<!-- @if (random >= 18) {
+<h4>You are mature</h4>
+} @else {
+<p>You are a child</p>
+} -->
+
+<!-- @if (random >= 18) {
+<h4>You are mature</h4>
+} @else if (random >= 13 && random < 18) {
+<p>You are a teenager</p>
+} @else {
+<p>You are a child</p>
+} -->
+
+<!-- Ng Switch -->
+
+<div>
+  <h2>NG Switch</h2>
+  <button
+    [style.backgroundColor]="'green'"
+    (click)="handleChangeColor('green')"
+  >
+    green
+  </button>
+  <button
+    [style.backgroundColor]="'yellow'"
+    (click)="handleChangeColor('yellow')"
+  >
+    yellow
+  </button>
+  <button [style.backgroundColor]="'red'" (click)="handleChangeColor('red')">
+    red
+  </button>
+
+  <div [ngSwitch]="color">
+    <div *ngSwitchCase="'green'">Green</div>
+    <div *ngSwitchCase="'yellow'">Yellow</div>
+    <div *ngSwitchCase="'red'">Red</div>
+    <div *ngSwitchDefault>Please select a color.</div>
+  </div>
+</div>

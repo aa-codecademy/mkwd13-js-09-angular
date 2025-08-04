@@ -1,0 +1,24 @@
+<!-- Old way of using iteration in Angular -->
+
+<!-- <div>
+  <h4>List of students</h4>
+  <ul>
+    <li *ngFor="let student of students">
+      {{ student.name }} - {{ student.age }} - {{ student.group }} -
+      {{ student.isActive ? "Active" : "Inactive" }}
+    </li>
+  </ul>
+</div> -->
+
+<div>
+  <h4>List of students</h4>
+  <ul>
+    @for (student of students; track student.id) {
+    <li>
+      {{ $index }} - {{ student.name }} - {{ student.age }} -
+      {{ student.group }} -
+      {{ student.isActive ? "Active" : "Inactive" }}
+    </li>
+    }
+  </ul>
+</div>

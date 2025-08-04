@@ -1,0 +1,25 @@
+<p>styles-example works!</p>
+
+<div class="card">
+  <h4>Title</h4>
+  <p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat laudantium
+    distinctio mollitia consequatur et iusto a qui molestias saepe? Possimus
+    quas in adipisci laborum accusamus dolore harum natus dolor rerum?
+  </p>
+</div>
+
+<div [class.card]="random > 5">
+  <h1 [style.color]="random > 5 ? 'green' : 'red'">
+    Test title ({{ random }})
+  </h1>
+  <p
+    [ngClass]="{
+      'green-text': random > 5
+    }"
+  >
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequuntur quis
+    sit nostrum commodi eaque ea minima, nam fugit culpa porro qui adipisci quas
+    repudiandae, officia iste. Consectetur sapiente asperiores libero!
+  </p>
+</div>
