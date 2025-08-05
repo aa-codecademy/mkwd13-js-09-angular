@@ -14,7 +14,7 @@ export class Gallery {
       author: {
         name: 'J.R.R. Tolkien',
         year: 1892,
-        country: 'Englang',
+        country: 'England',
       },
       imgSrc:
         'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=2056&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
