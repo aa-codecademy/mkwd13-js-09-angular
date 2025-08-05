@@ -1,0 +1,9 @@
+<div>
+  <h2>Parent Component</h2>
+  <h4>Info from the child: {{ infoFromChild }}</h4>
+
+  <app-child
+    [parentTitle]="titleFromParent"
+    (infoOutput)="onInfoRecieve($event)"
+  />
+</div>

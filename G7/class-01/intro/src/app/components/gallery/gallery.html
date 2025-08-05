@@ -1,0 +1,15 @@
+<h1>Movie gallery (Control Flow - Repetitive Content Rendering)</h1>
+<div class="movies">
+  @for(movie of movies; track $index) {
+  <div class="movie-container">
+    <img [src]="movie.imgSrc" alt="movie_cover" />
+    <div class="movie-container__desc">
+      <h1>{{ movie.title }}</h1>
+      <h3>{{ movie.author.name }}</h3>
+      <h3>{{ movie.author.year }}</h3>
+      <h3>{{ movie.author.country }}</h3>
+      <button (click)="onMoreInfoClicked(movie)">More Info</button>
+    </div>
+  </div>
+  }
+</div>

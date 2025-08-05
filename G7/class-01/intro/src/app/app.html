@@ -1,0 +1,74 @@
+<header>
+  <h1>Angular Class 01: Intro</h1>
+</header>
+<main>
+  <h2>Hello, {{ name }} from the year: {{ year }}</h2>
+
+  <h4>{{ person.firstName }}</h4>
+  <h4>{{ person.lastName }}</h4>
+  <h4>{{ person.age }}</h4>
+  <h4>{{ person.country }}</h4>
+
+  <div>
+    <h2>Property Binding</h2>
+
+    <h3
+      [style]="{ color: 'red', backgroundColor }"
+      [innerHTML]="'Property Binding ' + title"
+    ></h3>
+
+    <img [src]="imgSrc" alt="angular_logo" />
+
+    <button [disabled]="isDisabled">I will not be clicked!</button>
+  </div>
+
+  <hr />
+
+  <div>
+    <h2>Conditional Rendering (Control Flow Syntax)</h2>
+
+    @if(isHeadingVisible) {
+    <h1>This heading is visible!</h1>
+    } @else {
+    <h1>This heading is NOT visible!</h1>
+    }
+
+    <ul>
+      @for(fruit of fruits; track $index) {
+      <li>{{ fruit }}</li>
+      }
+    </ul>
+
+    <ul>
+      @for(car of cars; track car.id) {
+      <li class="car-item">
+        <h1>{{ car.brand }}</h1>
+        <h3>{{ car.model }}</h3>
+        <h4>{{ car.year }}</h4>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <hr />
+
+  <div>
+    <h2>Event Binding</h2>
+    <button (click)="printFullName('John', 'Doe')">Print Full Name</button>
+    <button (click)="printFullName('Jane', 'Doe')">Print Full Name</button>
+
+    <h3>This is course: {{ course }}</h3>
+    <button (click)="changeCourse()">Change Course</button>
+    <hr />
+    <input type="text" (keyup)="onInputChange($event)" />
+    <p>Input value is: {{ inputValue }}</p>
+  </div>
+
+  <hr />
+
+  <app-parent />
+
+  <hr />
+
+  <app-gallery />
+</main>

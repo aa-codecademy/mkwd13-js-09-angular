@@ -1,0 +1,29 @@
+.movies {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .movie-container {
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    width: 240px;
+    height: 500px;
+
+    &:last-child {
+      margin: 0;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &__desc {
+      padding: 12px;
+      text-align: center;
+    }
+  }
+}
