@@ -7,10 +7,11 @@ import {
   output,
 } from '@angular/core';
 import { Ticket } from '../../models/ticket.model';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-ticket-details',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './ticket-details.html',
   styleUrl: './ticket-details.scss',
 })

@@ -1,13 +1,30 @@
 <div class="ticket-panel">
   <div class="panel-controls">
-    <button class="control-btn">NEW</button>
-    <button class="control-btn">IN PROGRESS</button>
-    <button class="control-btn">DONE</button>
-    <button class="control-btn">RESET</button>
+    <button
+      class="control-btn"
+      (click)="filterTicketByStatus(ticketStatus.NEW)"
+    >
+      NEW
+    </button>
+    <button
+      class="control-btn"
+      (click)="filterTicketByStatus(ticketStatus.IN_PROGRESS)"
+    >
+      IN PROGRESS
+    </button>
+    <button
+      class="control-btn"
+      (click)="filterTicketByStatus(ticketStatus.DONE)"
+    >
+      DONE
+    </button>
+    <button class="control-btn" (click)="filteredTickets.set(ticketList())">
+      RESET
+    </button>
   </div>
   <div class="panel-container">
     <div class="ticket-list">
-      @for (ticket of ticketList(); track ticket.id) {
+      @for (ticket of filteredTickets(); track ticket.id) {
         <app-ticket-box
           [ticket]="ticket"
           (ticketOutput)="onTicketSelect($event)"
@@ -21,5 +38,16 @@
         (hideOutput)="isDetailsShown.set(false)"
       />
     }
+    <!-- Legacy way of conditional rednering with structural directives -->
+    <!-- <app-ticket-box
+        *ngFor="let ticket of filteredTickets()"
+        [ticket]="ticket"
+        (ticketOutput)="onTicketSelect($event)"
+      /> -->
+    <!-- <app-ticket-details
+      *ngIf="isDetailsShown()"
+      [selectedTicket]="selectedTicket()"
+      (hideOutput)="isDetailsShown.set(false)"
+    /> -->
   </div>
 </div>
