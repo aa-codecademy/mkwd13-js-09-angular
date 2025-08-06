@@ -6,10 +6,20 @@
     <button class="control-btn">RESET</button>
   </div>
   <div class="panel-container">
-    <!-- <ol>
-  @for (ticket of ticketList(); track ticket.id) {
-    <li>{{ ticket.title }} | {{ ticket.assignee }}</li>
-  }
-</ol> -->
+    <div class="ticket-list">
+      @for (ticket of ticketList(); track ticket.id) {
+        <app-ticket-box
+          [ticket]="ticket"
+          (ticketOutput)="onTicketSelect($event)"
+        />
+      }
+    </div>
+    @if (isDetailsShown()) {
+      <!-- Signals can have their values set directly in the template without the need of template method wrappers -->
+      <app-ticket-details
+        [selectedTicket]="selectedTicket()"
+        (hideOutput)="isDetailsShown.set(false)"
+      />
+    }
   </div>
 </div>
