@@ -1,1 +1,17 @@
-<p>Test</p>
+<h1>Parent Component</h1>
+
+<button (click)="toggleChild()">
+  {{ showChild ? "Hide" : "Show" }} child component
+</button>
+
+<br />
+<br />
+
+<button (click)="increment()">+</button>
+<button (click)="decrement()">-</button>
+
+<hr />
+
+@if (showChild) {
+<app-standard-child-component [counter]="counter" />
+}

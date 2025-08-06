@@ -1,0 +1,28 @@
+<h1>Parent component</h1>
+
+<button (click)="increment()">+</button>
+<button (click)="decrement()">-</button>
+<p>Counter: {{ counter() }}</p>
+
+<br />
+<br />
+
+<button (click)="chooseRandomName()">Generate a new random name</button>
+<p>Name: {{ name() }}</p>
+
+<hr />
+
+<button (click)="handleChildVisibility()">
+  {{ showChild() ? "Hide" : "Show" }} child component
+</button>
+
+<p>
+  Last Time the button in child component was clicked: {{ lastTimeOfClick() }}
+</p>
+
+@if(showChild()) {
+<app-child-signal
+  [counter]="counter()"
+  (timeChanged)="handleTimeChanged($event)"
+/>
+}
