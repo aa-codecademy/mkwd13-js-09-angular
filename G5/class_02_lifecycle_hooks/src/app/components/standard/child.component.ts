@@ -4,20 +4,19 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
+  Input,
   OnChanges,
   OnDestroy,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { StandardChildComponent } from './child.component';
 
 @Component({
-  selector: 'app-standard-parent',
+  selector: 'app-standard-child-component',
   standalone: true,
-  templateUrl: './standard.component.html',
-  imports: [StandardChildComponent],
+  templateUrl: './child.component.html',
 })
-export class StandardParentComponent
+export class StandardChildComponent
   implements
     OnInit,
     OnChanges,
@@ -27,8 +26,7 @@ export class StandardParentComponent
     AfterContentChecked,
     AfterViewChecked
 {
-  counter = 0;
-  showChild = true;
+  @Input() counter = 0;
 
   // Important ones
   constructor() {
@@ -41,7 +39,7 @@ export class StandardParentComponent
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.#log('ngOnChanges', changes);
+    this.#log('ngOnChanges', changes['counter']);
   }
 
   ngAfterViewInit() {
@@ -66,27 +64,12 @@ export class StandardParentComponent
   }
 
   ngAfterViewChecked() {
-    this.#log('ngAfterVieChecked');
-  }
-
-  toggleChild() {
-    this.showChild = !this.showChild;
-    this.#log(`Child is now ${this.showChild ? 'visible' : 'hidden'}`);
-  }
-
-  increment() {
-    this.counter++;
-    this.#log(`Counter incremented ${this.counter}`);
-  }
-
-  decrement() {
-    this.counter--;
-    this.#log(`Counter decremented ${this.counter}`);
+    this.#log('ngAfterViewChecked');
   }
 
   #log(message: string, data?: unknown) {
     const timestamp = new Date().toLocaleTimeString();
-    const logMessage = `[${timestamp}] Parent: ${message}`;
+    const logMessage = `[${timestamp}] Child: ${message}`;
 
     console.log(logMessage, data);
   }
