@@ -1,0 +1,28 @@
+<div class="ticket-panel">
+  <div class="panel-controls">
+    <button (click)="filterTicketsByStatus(ticketStatus.NEW)">NEW</button>
+    <button (click)="filterTicketsByStatus(ticketStatus.IN_PROGRESS)">
+      IN PROGRESS
+    </button>
+    <button (click)="filterTicketsByStatus(ticketStatus.DONE)">DONE</button>
+    <button (click)="filteredTickets.set(ticketList())">RESET</button>
+  </div>
+  <div class="panel-container">
+    <div class="ticket-list">
+      @for(ticket of filteredTickets(); track $index) {
+      <app-ticket-box
+        [ticket]="ticket"
+        (ticketOutput)="onTicketSelect($event)"
+      />
+      }
+    </div>
+    @if(isDetailsShown()) {
+    <app-ticket-details
+      [selectedTicket]="selectedTicket()"
+      (hideOutput)="isDetailsShown.set(false)"
+    ></app-ticket-details>
+    }
+  </div>
+</div>
+
+<!-- <div>{{ myInput }}</div> -->
