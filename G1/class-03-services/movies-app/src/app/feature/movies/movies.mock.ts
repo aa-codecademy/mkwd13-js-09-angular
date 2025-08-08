@@ -34,4 +34,15 @@ export const moviesMock: Movie[] = [
     likeCount: 321,
     director: 'Quentin Tarantino',
   },
+  {
+    id: 4,
+    title: 'War of the Worlds',
+    year: 2025,
+    genres: 'horor, tragedy',
+    rating: 0,
+    text: 'Worst movie of all time by MoistCritical',
+    author: 'Charlie',
+    likeCount: 1500,
+    director: 'Who Cares',
+  },
 ];

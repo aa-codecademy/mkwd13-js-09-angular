@@ -28,3 +28,20 @@ main {
     margin: 0;
   }
 }
+
+.item-rating {
+  font-weight: 600;
+  background-color: #ffdb15;
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.item-likes {
+  background-color: rgb(77, 168, 205);
+  font-weight: 600;
+  margin-left: 15px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+}
