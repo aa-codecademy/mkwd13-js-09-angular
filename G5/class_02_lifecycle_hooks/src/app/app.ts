@@ -4,6 +4,7 @@ import { StandardParentComponent } from './components/standard/standard.componen
 
 @Component({
   selector: 'app-root',
+  providers: [],
   imports: [StandardParentComponent, ParentSignalComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',

@@ -1,0 +1,11 @@
+<div>
+  <h1>List of students</h1>
+  <!-- <pre>
+    {{ students | json }}
+  </pre> -->
+  <ul>
+    @for (student of students; track student.id) {
+    <app-student-item [student]="student" />
+    }
+  </ul>
+</div>

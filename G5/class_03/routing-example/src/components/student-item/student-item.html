@@ -1,0 +1,9 @@
+@if(student()) {
+<li>
+  <a [routerLink]="[student()?.id]">{{ student()?.name }}</a> -
+  {{ student()?.email }} - {{ student()?.age }} -
+  {{ student()?.group }}
+</li>
+} @else {
+<p>Student not available.</p>
+}

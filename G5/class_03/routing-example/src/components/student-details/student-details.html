@@ -1,0 +1,16 @@
+<br />
+
+<button (click)="goBack()">Go Back</button>
+
+<h1>Student #{{ student()?.id }}</h1>
+
+<!-- <pre>
+  {{ student() | json }}
+</pre> -->
+
+<h2>Full name: {{ student()?.name }}</h2>
+<h3>Age: {{ student()?.age }}</h3>
+<h4>E-mail: {{ student()?.email }}</h4>
+<h5>Group: {{ student()?.group }}</h5>
+
+<button (click)="goHome()">Go Home</button>
