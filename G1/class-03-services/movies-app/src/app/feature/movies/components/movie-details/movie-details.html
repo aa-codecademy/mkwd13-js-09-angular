@@ -6,7 +6,7 @@
         {{ selectedMovie().likeCount }} <i class="fa-regular fa-thumbs-up"></i>
       </span>
       <span class="item-rating">
-        {{ selectedMovie().rating }} <i class="fa-regular fa-start"></i>
+        {{ selectedMovie().rating }} <i class="fa-regular fa-star"></i>
       </span>
     </div>
     <div class="details-body">
@@ -23,6 +23,18 @@
       <p>
         <em>{{ selectedMovie().author }}</em>
       </p>
+      <div class="details-controls">
+        <app-button
+          iconClass="fa-solid fa-thumbs-up"
+          [style]="{ backgroundColor: '#B5DFB2' }"
+          (btnClick)="onClickLikeDislike('LIKE')"
+        />
+        <app-button
+          iconClass="fa-solid fa-thumbs-down"
+          [style]="{ backgroundColor: '#fe9a9a' }"
+          (btnClick)="onClickLikeDislike('DISLIKE')"
+        />
+      </div>
     </div>
   } @else {
     <div class="details-heading">
