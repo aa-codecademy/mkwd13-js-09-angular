@@ -3,4 +3,16 @@
 </header>
 <main>
   <app-ticket-panel [ticketList]="ticketList" />
+  <div>
+    <button (click)="generateRandomColor()">RANDOMIZE COLOR</button>
+    <p class="color-text" [ngStyle]="{ backgroundColor: randomColor() }">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error rem eaque
+      accusamus modi at aut omnis voluptatem fugit adipisci doloremque,
+      dignissimos repellat ad voluptatum dolores. Ex magni repellendus odit
+      placeat? Eligendi aut quia nostrum earum repellendus, asperiores corrupti
+      dolorum atque amet, dolor nulla doloremque impedit dignissimos ipsam.
+      Perferendis culpa, explicabo quasi repellat laudantium, incidunt
+      architecto perspiciatis debitis dolorum nostrum vitae.
+    </p>
+  </div>
 </main>

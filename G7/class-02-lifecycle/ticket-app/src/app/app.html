@@ -1,0 +1,33 @@
+<header>
+  <h1>Ticket App</h1>
+</header>
+<main>
+  <app-ticket-panel [ticketList]="ticketList" [myInput]="'new value'" />
+
+  <hr />
+
+  <div>
+    <h1>{{ counter() }}</h1>
+    <button (click)="decrement()">Decrement</button>
+    <button (click)="setCounter(10)">Set counter</button>
+    <button (click)="increment()">Increment</button>
+    <button (click)="counter.set(20)">Set counter through template</button>
+  </div>
+  <hr />
+  <div>
+    <button (click)="generateRandomColor()">Randomize Color</button>
+    <p [ngStyle]="{ backgroundColor: randomColor(), color: randomTextColor() }">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure similique,
+      ut consequuntur distinctio aliquid, quidem sapiente odit porro,
+      perferendis sint reiciendis. Voluptates quasi reiciendis velit similique
+      minima, laborum asperiores rem! Reiciendis pariatur non, vitae et, nisi
+      ducimus expedita hic doloribus molestias, exercitationem ad officia
+      consectetur adipisci quos facilis maxime doloremque deserunt accusamus in.
+      Itaque possimus cupiditate tempore quibusdam ducimus veniam? Facilis
+      quisquam eum consectetur ad necessitatibus. Quas molestiae minima
+      consequuntur suscipit sapiente atque tempora. Accusantium quisquam
+      voluptatum, ullam eligendi odio doloremque dolorum vero, adipisci quam
+      cupiditate, et nesciunt maxime consectetur?
+    </p>
+  </div>
+</main>

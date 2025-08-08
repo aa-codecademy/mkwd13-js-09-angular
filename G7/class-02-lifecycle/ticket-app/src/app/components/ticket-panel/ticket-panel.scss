@@ -1,0 +1,21 @@
+.panel-container {
+  display: flex;
+}
+
+.panel-controls {
+  display: flex;
+  gap: 8px;
+
+  > button {
+    min-width: 100px;
+    transition: 200ms;
+    border: 1px solid #a6a6a6;
+    border-radius: 6px;
+    padding: 4px;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+}

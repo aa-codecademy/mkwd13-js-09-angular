@@ -1,0 +1,14 @@
+<div class="ticket-details">
+  @if (selectedTicket()) {
+  <h3>Ticket: {{ selectedTicket()?.title }}</h3>
+  <div>Description: {{ selectedTicket()?.description }}</div>
+  <p>
+    <strong [ngClass]="selectedTicket()?.status"
+      >Assignee: {{ selectedTicket()?.assignee }}</strong
+    >
+  </p>
+  <button (click)="onCloseClick()">Close</button>
+  } @else {
+  <h3>No ticket selected!</h3>
+  }
+</div>
