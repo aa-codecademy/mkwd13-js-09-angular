@@ -1,0 +1,7 @@
+<div class="todoCard">
+    <h3>{{singleTodo().description}}</h3>
+    <p>Created at: {{singleTodo().createdAt.toDateString()}}</p>
+    <p [style.color]="singleTodo().isDone ? 'green' : 'red' ">{{singleTodo().isDone ? 'Completed' : 'In Progress'}}</p>
+
+    <button>{{singleTodo().isDone ? 'Revert' : 'Complete'}} </button>
+</div>

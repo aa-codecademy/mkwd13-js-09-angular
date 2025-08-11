@@ -15,13 +15,8 @@
     <!-- <img src="{{ imageUrl }}" alt="Image of something" /> -->
 
     <!-- Use this way: -->
-    <img
-      [src]="imageUrl"
-      alt="Image of something"
-      [height]="imageHeight"
-      [width]="imageWidth"
-      [style.border]="'1px solid black'"
-    />
+    <img [src]="imageUrl" alt="Image of something" [height]="imageHeight" [width]="imageWidth"
+      [style.border]="'1px solid black'" />
   </div>
 
   <div>
@@ -30,11 +25,7 @@
       <button (click)="handleClick()">Click me!</button>
       <p>Clicked: {{ clickCount }} times</p>
 
-      <input
-        type="text"
-        placeholder="Type something..."
-        (input)="handleInput($event)"
-      />
+      <input type="text" placeholder="Type something..." (input)="handleInput($event)" />
       <p>Input value: {{ inputValue }}</p>
     </div>
   </div>
@@ -42,11 +33,7 @@
   <div>
     <h4>Two-way Binding</h4>
     <div>
-      <input
-        type="text"
-        [(ngModel)]="twoWayExample"
-        placeholder="Two way binding example"
-      />
+      <input type="text" [(ngModel)]="twoWayExample" placeholder="Two way binding example" />
       <p>2-way binding result: {{ twoWayExample }}</p>
     </div>
   </div>

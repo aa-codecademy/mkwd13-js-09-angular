@@ -1,0 +1,14 @@
+<section>
+    @for (todo of todos(); track todo.id){
+        <app-single-todo [singleTodo]="todo"></app-single-todo>
+    }
+</section>
+
+
+
+<hr />
+<h3>Create todo:</h3>
+<!-- (todoTitleOutput) this way we consume the output single from the child  -->
+<!-- handleConsumeTitleOutput is the method that will "consume" the value from the child component  -->
+<!-- $event is reserved keyword that contains the value -->
+<app-create-todo (todoTitleOutput)="handleConsumeTitleOutput($event)"></app-create-todo>

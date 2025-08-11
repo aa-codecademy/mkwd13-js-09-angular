@@ -1,0 +1,22 @@
+<div>
+ <h3>Traditional approach to change detection using zones</h3>
+ <p>Counter: {{ counter_traditional }} </p>
+ <button (click)="updateTraditionalCounter()">Update traditional</button>
+</div>
+
+<hr />
+<div>
+    <h3>Using signals to detect changes</h3>
+    <p>Counter: {{ counter() }}</p>
+    <p>label: {{label()}}</p>
+    <p>{{isEven()}}</p>
+    <button (click)="increment()">Increment</button>
+    <button (click)="decrement()">Decrement</button>
+    <button (click)="multiplyBy.set(20)">Multiply</button>
+</div>
+
+<hr />
+<div>
+    <h3>{{ heading }}</h3>
+    <h3>{{ headingInputSingal() }}</h3>
+</div>
