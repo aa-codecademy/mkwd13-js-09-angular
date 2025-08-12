@@ -1,0 +1,12 @@
+button {
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 4px;
+  transition: 0.3s;
+  border: 1px solid darkgrey;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #4da8cd !important;
+  }
+}
