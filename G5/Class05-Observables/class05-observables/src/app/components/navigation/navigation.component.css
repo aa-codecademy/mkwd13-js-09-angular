@@ -1,0 +1,15 @@
+nav ul {
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+}
+
+ul li {
+    cursor: pointer;
+    transition: all 0.2 ease-in-out;
+}
+
+ul li:hover {
+    color: rgb(119, 119, 217);
+    scale: 1.2
+}
