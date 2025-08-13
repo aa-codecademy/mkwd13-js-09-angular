@@ -1,13 +1,22 @@
 <header class="header">
-  <div class="logo">
+  <div class="logo" routerLink="/">
     <img src="images/movies-logo.svg" alt="movie reel logo" />
   </div>
   <nav>
     <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="">Movies</a></li>
-      <li><a href="">Add Movie</a></li>
-      <li><a href="">About</a></li>
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+      </li>
+      <li><a routerLink="/movies" routerLinkActive="active">Movies</a></li>
+      <li>
+        <a routerLink="/add-movie" routerLinkActive="active">Add Movie</a>
+      </li>
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
     </ul>
   </nav>
 </header>
