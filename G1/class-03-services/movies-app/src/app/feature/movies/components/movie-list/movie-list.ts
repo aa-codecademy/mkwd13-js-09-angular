@@ -1,6 +1,5 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie.model';
-import { moviesMock } from '../../movies.mock';
 import { MovieItem } from '../movie-item/movie-item';
 import { LoggerService } from '../../../../core/services/logger-service';
 import { MoviesService } from '../../../../core/services/movies-service';
