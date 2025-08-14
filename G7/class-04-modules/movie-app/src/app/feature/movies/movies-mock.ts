@@ -1,0 +1,48 @@
+import { Movie } from './models/movie-model';
+
+export const moviesMock: Movie[] = [
+  {
+    id: 1,
+    title: 'The Godfather',
+    year: 1971,
+    genres: 'drama, crime',
+    rating: 10,
+    text: 'A landmark of cinema!',
+    author: 'Dimitar',
+    director: 'Francis Ford Copolla',
+    likeCount: 523,
+  },
+  {
+    id: 2,
+    title: 'The Matrix',
+    year: 1999,
+    genres: 'sci-fi, action',
+    rating: 10,
+    text: 'One of the best sci-fi epics of the 20th century.',
+    author: 'Jack',
+    director: 'The Wachowskis',
+    likeCount: 523,
+  },
+  {
+    id: 3,
+    title: 'Pulp Fiction',
+    year: 1994,
+    genres: 'crime, drama',
+    rating: 9,
+    text: "Tarantino's best work by far.",
+    author: 'John',
+    director: 'Quentin Tarantino',
+    likeCount: 321,
+  },
+  {
+    id: 4,
+    title: 'War of the Worlds',
+    year: 2025,
+    genres: 'horror, tragedy',
+    rating: 1,
+    text: "Worst movie of all time by MoistCritical",
+    author: 'Charlie',
+    director: 'Nobody knows...',
+    likeCount: 1000,
+  },
+];
