@@ -21,4 +21,10 @@ export class MovieDetails implements OnInit {
       this.selectedMovie = value;
     });
   }
+
+  onClickLikeDislike(type: 'LIKE' | 'DISLIKE') {
+    console.log('clicked like/dislike: ', type);
+    // Call the service method to handle like/dislike
+    this.moviesService.addLikeDislike(type);
+  }
 }

@@ -1,0 +1,13 @@
+<button
+  class="button"
+  [type]="type"
+  [ngStyle]="style"
+  [disabled]="disabled"
+  (click)="onBtnClick()"
+>
+  @if (text) {
+  {{ text }}
+  } @if (iconClass) {
+  <i [ngClass]="iconClass"></i>
+  }
+</button>
