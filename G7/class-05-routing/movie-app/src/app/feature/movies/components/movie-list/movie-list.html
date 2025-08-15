@@ -1,0 +1,14 @@
+<section class="container movie-list">
+  <div class="movies-heading">
+    <h2>Reviews</h2>
+    <div class="list-content">
+      <ul>
+        @for (movie of movies(); track movie.id) {
+        <li>
+          {{ movie.title }}
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>
