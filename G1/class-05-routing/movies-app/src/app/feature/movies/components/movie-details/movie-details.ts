@@ -15,6 +15,8 @@ export class MovieDetails {
   private route = inject(ActivatedRoute);
 
   ngOnInit() {
+    console.log(this.route.snapshot);
+
     const movieId: string = this.route.snapshot.params['id'];
 
     this.moviesService.geMovieById(movieId);

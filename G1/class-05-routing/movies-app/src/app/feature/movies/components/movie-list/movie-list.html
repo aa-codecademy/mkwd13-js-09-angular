@@ -13,12 +13,31 @@
     </p>
   </div>
 
+  <div class="sort-container">
+    <span><strong>Sort By: </strong></span>
+    <app-button
+      text="Rating"
+      (btnClick)="onSortClick('rating')"
+      [style]="{ padding: '5px 10px' }"
+    />
+    <app-button
+      text="Like Count"
+      (btnClick)="onSortClick('likeCount')"
+      [style]="{ padding: '5px 10px' }"
+    />
+    <app-button
+      text="Reset"
+      (btnClick)="resetSort()"
+      [style]="{ padding: '5px 10px' }"
+    />
+  </div>
+
   <div class="list-content">
     <ul>
-      @for(movie of movies(); track movie.id) {
-      <li (click)="onMovieClick(movie)">
-        <app-movie-item [movie]="movie" />
-      </li>
+      @for (movie of movies(); track movie.id) {
+        <li (click)="onMovieClick(movie)">
+          <app-movie-item [movie]="movie" />
+        </li>
       }
     </ul>
   </div>
