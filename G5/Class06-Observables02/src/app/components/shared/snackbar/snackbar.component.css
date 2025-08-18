@@ -1,0 +1,25 @@
+.info {
+    border: 1px solid lightblue;
+    background-color: rgba(173, 216, 230, 0.58);
+}
+
+.warn {
+    border: 1px solid orange;
+    background-color: rgba(255, 166, 0, 0.562);
+}
+
+.success {
+    border: 1px solid green;
+    background-color: rgba(0, 128, 0, 0.524);
+}
+
+.error {
+    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.51);
+}
+
+.snackbar {
+    max-width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+}

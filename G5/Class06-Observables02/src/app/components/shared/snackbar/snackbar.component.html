@@ -1,0 +1,12 @@
+@if(info()){
+<div [ngClass]="{
+    info: info()?.severity === 'info',
+    warn: info()?.severity === 'warn',
+    success: info()?.severity === 'success',
+    error: info()?.severity === 'error'
+}"
+
+class="snackbar">
+  {{ info()?.description }}
+</div>
+}

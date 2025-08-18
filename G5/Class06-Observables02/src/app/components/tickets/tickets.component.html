@@ -1,0 +1,7 @@
+<section class="ticketContainer">
+  @if(!hasTickets()){
+  <h2>No tickets found</h2>
+  } @for(ticket of tickets(); track ticket.id){
+  <app-ticket [ticket]="ticket" />
+  }
+</section>

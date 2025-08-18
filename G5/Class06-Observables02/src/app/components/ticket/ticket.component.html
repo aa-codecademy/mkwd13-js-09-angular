@@ -1,0 +1,8 @@
+<div class="ticketCard">
+    <h2>{{ticket().title}}</h2>
+    <p>{{ticket().description}}</p>
+    <p>{{ticket().status}}</p>
+    <p>{{ticket().assignee}}</p>
+    <p>{{ticket().createdAt.toLocaleDateString()}}</p>
+    <button (click)="handleRemove()">Remove</button>
+</div>
