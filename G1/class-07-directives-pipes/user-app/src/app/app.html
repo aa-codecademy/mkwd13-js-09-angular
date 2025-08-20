@@ -1,9 +1,23 @@
 <app-header />
 <main class="main">
-  <!-- The entire project logic -->
+  <div class="form-control">
+    <!-- <input
+      type="text"
+      class="input"
+      placeholder="filter by name..."
+      (change)="onInputChange($event)" //This only runs on focus out 
+      (keyup)="onInputChange($event)"
+    /> -->
+    <input
+      type="text"
+      class="input"
+      placeholder="filter by name..."
+      [(ngModel)]="searchValue"
+    />
+    <p>{{ searchValue() }}</p>
+  </div>
   <div class="users-container">
-    <!-- A list of user cards -->
-    @for (user of users(); track user.id) {
+    @for (user of users() | filter: searchValue(); track user.id) {
       <app-user-card [user]="user" />
     }
   </div>
