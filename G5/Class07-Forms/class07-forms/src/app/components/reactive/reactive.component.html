@@ -1,0 +1,68 @@
+<form [formGroup]="myForm" (ngSubmit)="onHandleSubmit()">
+  <input
+    type="text"
+    name="firstName"
+    id=""
+    placeholder="Enter first name"
+    formControlName="firstName"
+  />
+
+  <!-- @if(myForm.get('firstName')?.hasError('required') &&
+  myForm.get('firstName')?.touched ){
+  <span>Enter first name</span>
+  } -->
+
+  <!-- same as above but reusable method -->
+  @if(getErrorMessage('firstName', 'required')){
+  <span>
+    {{ getErrorMessage("firstName", "required") }}
+  </span>
+  } @if(getErrorMessage('firstName', 'minlength', 5)){
+  <span>
+    {{ getErrorMessage("firstName", "minlength", 5) }}
+  </span>
+  }
+
+  <input
+    type="text"
+    name="lastName"
+    id=""
+    placeholder="Enter last name"
+    formControlName="lastName"
+  />
+
+  @if(getErrorMessage('lastName', 'required')){
+  <span>
+    {{ getErrorMessage("lastName", "required") }}
+  </span>
+  } @if(getErrorMessage('lastName', 'minlength', 3)){
+  <span>
+    {{ getErrorMessage("lastName", "minlength", 3) }}
+  </span>
+  }
+
+  <input
+    type="text"
+    name="phoneNumber"
+    id=""
+    placeholder="Enter phonenumber"
+    formControlName="phoneNumber"
+  />
+
+  <input
+    type="email"
+    name="email"
+    id=""
+    placeholder="Enter email"
+    formControlName="email"
+  />
+
+  <select name="selectExample" formControlName="selectExample">
+    <option value="1">One</option>
+    <option value="2">Two</option>
+  </select>
+
+  <textarea name="coverLetter" id="" formControlName="coverLetter"></textarea>
+
+  <button [disabled]="false">Submit</button>
+</form>

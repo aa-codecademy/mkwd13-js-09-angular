@@ -1,0 +1,59 @@
+<form #myForm="ngForm" (ngSubmit)="onHandleSubmit()">
+  <input
+    type="text"
+    name="firstName"
+    id=""
+    placeholder="Enter first name"
+    ngModel
+    required
+  />
+
+  <!-- Accessing the firstName input (form control) from the myForm reference  -->
+  @if((myForm.form.controls["firstName"].invalid &&
+  myForm.form.controls["firstName"].touched)
+  ||(myForm.form.controls["firstName"].invalid && myForm.submitted)){
+  <span>Enter first name</span>
+  }
+
+  <input
+    type="text"
+    name="lastName"
+    id=""
+    placeholder="Enter last name"
+    ngModel
+    required
+    #lastName="ngModel"
+  />
+  <!-- creating a reference for #lastName and accessing the reference directly -->
+  @if((lastName.invalid && lastName.touched) || (lastName.invalid &&
+  myForm.submitted) ){
+  <span>Enter last name</span>
+  }
+
+  <input
+    type="text"
+    name="phoneNumber"
+    id=""
+    placeholder="Enter phonenumber"
+    ngModel
+    required
+  />
+
+  <input
+    type="email"
+    name="email"
+    id=""
+    placeholder="Enter email"
+    ngModel
+    required
+  />
+
+  <select name="selectExample" ngModel>
+    <option selected value="1">One</option>
+    <option value="2">Two</option>
+  </select>
+
+  <textarea name="coverLetter" id="" ngModel></textarea>
+
+  <button [disabled]="myForm.invalid">Submit</button>
+</form>
