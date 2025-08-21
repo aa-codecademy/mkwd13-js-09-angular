@@ -1,8 +1,8 @@
-import { ShortenPipePipe } from './shorten-pipe-pipe';
+import { ShortenPipe } from './shorten-pipe';
 
 describe('ShortenPipePipe', () => {
   it('create an instance', () => {
-    const pipe = new ShortenPipePipe();
+    const pipe = new ShortenPipe();
     expect(pipe).toBeTruthy();
   });
 });

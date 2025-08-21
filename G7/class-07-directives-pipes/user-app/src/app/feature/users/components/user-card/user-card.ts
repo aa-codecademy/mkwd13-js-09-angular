@@ -3,7 +3,7 @@ import { User } from '../../models/user-model';
 import { HoverShadowDirective } from '../../../../core/directives/hover-shadow-directive';
 import { ToggleAddressDirective } from '../../../../core/directives/toggle-address-directive';
 import { CommonModule } from '@angular/common';
-import { ShortenPipe } from '../../../../core/pipes/shorten-pipe-pipe';
+import { ShortenPipe } from '../../../../core/pipes/shorten-pipe';
 
 @Component({
   selector: 'app-user-card',
