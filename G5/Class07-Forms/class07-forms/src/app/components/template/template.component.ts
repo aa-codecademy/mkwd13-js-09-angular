@@ -8,16 +8,19 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './template.component.scss',
 })
 export class TemplateComponent {
+  // Grabs the template reference variable #myForm (NgForm instance) after view init
   @ViewChild('myForm') myForm: NgForm;
 
   onHandleSubmit() {
     console.log('Submitted formReference', this.myForm);
 
+    // All aggregated form values (object with each control's name/value)
     const formValues = this.myForm.value;
 
+    // Template-driven validation state (invalid if any control invalid)
     const isFormInvalid = this.myForm.invalid;
-    if (isFormInvalid) return;
+    if (isFormInvalid) return; // Guard: stop if invalid
 
-    console.log(formValues); // make api request using this values
+    console.log(formValues); // Could trigger API call / service method here
   }
 }
