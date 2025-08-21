@@ -1,0 +1,34 @@
+<!-- <div>
+  <h1 *ngIf="true">This is an ngIf example (deprecated)</h1>
+</div>
+<div>
+  <h1>This is an ngFor example (deprecated)</h1>
+  <ul *ngFor="let number of [1, 2, 3, 4, 5]">
+    <li>{{ number }}</li>
+  </ul>
+</div> -->
+<!-- <div [ngClass]="dynamicClass" [ngStyle]="style">
+  <h1>This is an ngClass example</h1>
+</div> -->
+<app-header />
+<main class="main">
+  <div class="form-control">
+    <!-- <input
+      type="text"
+      class="input"
+      placeholder="Filter by name..."
+      (keyup)="onInputChange($event)"
+    /> -->
+    <input
+      type="text"
+      class="input"
+      placeholder="Filter by name..."
+      [(ngModel)]="searchValue"
+    />
+  </div>
+  <div class="users-container">
+    @for (user of users() | filter: searchValue(); track user.id) {
+    <app-user-card [user]="user" />
+    }
+  </div>
+</main>

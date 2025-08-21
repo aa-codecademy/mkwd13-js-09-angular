@@ -1,0 +1,40 @@
+<div class="user" appHoverShadow>
+  <div class="user-header">
+    <div class="user-id">{{ user().id }}</div>
+    <div>
+      <!-- Converts the user's name to all uppercase letters. -->
+      <div>{{ user().name | uppercase }}</div>
+      <!-- Converts the user's name to all lowercase letters. -->
+      <div>{{ user().email | lowercase }}</div>
+    </div>
+  </div>
+  <div class="user-details">
+    <h3>Personal Details</h3>
+    <div class="details-item">
+      <p>Phone: {{ user().phone }}</p>
+      <p>Website: {{ user().website }}</p>
+      <!-- Formats the user's birthdate using Angular's date pipe with the "short" format -->
+      <p>Birthdate: {{ user().dateOfBirth | date : "short" }}</p>
+    </div>
+    <div class="details-item">
+      <!-- Formats the hourly rate as currency in Euros (e.g. €20.00) -->
+      <p>Hourly Rate: {{ user().hourlyRate | currency : "EUR" }}</p>
+      <!-- Formats the rating as a number with 1 digit before the decimal, and between 1-3 after the decimal -->
+      <p>Rating: {{ user().rating | number : "1.1-3" }}</p>
+      <!-- Formats the rating as a percentage with 1 digit before the decimal, and between 1 and 3 digits after the decimal -->
+      <p>Rating %: {{ user().rating | percent : "1.1-3" }}</p>
+    </div>
+  </div>
+  <div class="address-container" appToggleAddress [isInitiallyOpen]="true">
+    <h3>Address 🔽</h3>
+    <div class="address-details">
+      <div class="address-content">
+        <p>Street: {{ user().address.street }}</p>
+        <p>Suite: {{ user().address.suite }}</p>
+        <!-- Uses our custom "shorten" pipe to display only the first 6 characters of the city name, followed by "..." -->
+        <p>City: {{ user().address.city | shorten : 6 }}</p>
+        <p>Zipcode: {{ user().address.zipcode }}</p>
+      </div>
+    </div>
+  </div>
+</div>

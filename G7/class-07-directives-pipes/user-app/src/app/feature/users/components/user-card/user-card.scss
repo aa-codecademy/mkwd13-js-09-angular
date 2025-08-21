@@ -1,0 +1,44 @@
+.user {
+  padding: 15px;
+  margin: 10px;
+  background-color: #f9fdff;
+  border: 1px solid #2d3436;
+  border-radius: 4px;
+
+  .details-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid #a7a9a9;
+
+    // The :nth-of-type() selector in SCSS (or plain CSS) is used to style elements based on their position among siblings of the same type (tag).
+    &:nth-of-type(2) {
+      border-bottom: none;
+    }
+  }
+
+  .user-header {
+    display: flex;
+    font-size: 22px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #a7a9a9;
+
+    .user-id {
+      font-size: 45px;
+      margin: 0 20px 0 10px;
+    }
+  }
+
+  .address-container {
+    .address-content {
+      display: flex;
+      gap: 20px;
+    }
+
+    > h3 {
+      cursor: pointer;
+    }
+    > h3:hover {
+      color: darkgray;
+    }
+  }
+}
