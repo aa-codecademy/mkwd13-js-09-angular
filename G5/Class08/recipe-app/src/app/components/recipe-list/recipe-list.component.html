@@ -1,0 +1,40 @@
+<div class="recipe-list">
+  <div class="header">
+    <h1>My Recipe Collection</h1>
+    <p>Total recipes: {{ allRecipes().length }}</p>
+
+    <a routerLink="/add-recipe" class="btn btn-primary">Add new recipe</a>
+  </div>
+
+  @if(allRecipes().length === 0){
+  <div class="empty">
+    <h3>No recipes found</h3>
+  </div>
+  }@else {
+  <div class="recipe-grid">
+    @for(recipe of allRecipes(); track recipe.id){
+    <div class="recipe-card">
+      <div class="recipe-image">
+        <img [src]="recipe.imageUrl" [alt]="recipe.title" />
+      </div>
+
+      <div class="recipe-content">
+        <h3>{{ recipe.title }}</h3>
+        <p>{{ recipe.description }}</p>
+        <span class="difficulty">{{ recipe.difficulty }}</span>
+        <div class="recipe-actions">
+          <a [routerLink]="['/recipe', recipe.id]" class="btn btn-secondary"
+            >View</a
+          >
+          <a [routerLink]="['/edit-recipe', recipe.id]" class="btn">Edit</a>
+          <button (click)="deleteRecipe(recipe.id)" class="btn btn-danger">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    }
+  </div>
+  }
+</div>

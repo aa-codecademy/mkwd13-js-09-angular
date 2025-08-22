@@ -1,0 +1,98 @@
+<div class="recipe-form">
+  <div class="form-header">
+    <h1>Add new recipe</h1>
+    <button class="btn back-btn">&larr; Back to Recipes</button>
+  </div>
+
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <!-- TEXT FIELD -->
+    <div class="form-group">
+      <label for="title">Recipe Title *</label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Enter title"
+        formControlName="title"
+      />
+      <div class="error-message"></div>
+    </div>
+
+    <!-- DESCRIPTION FIELD -->
+    <div class="form-group">
+      <label for="description">Description *</label>
+      <textarea
+        type="text"
+        id="description"
+        placeholder="Describe your recipe"
+        rows="3"
+        formControlName="description"
+      ></textarea>
+      <div class="error-message"></div>
+    </div>
+
+    <!-- INGREDIANTS FIELD -->
+    <div class="form-group">
+      <label for="Ingrediants">Ingrediants *</label>
+      <div formArrayName="ingrediants">
+        @for(ingrediant of getIngrediants().controls; track $index; let i =
+        $index){
+        <div [formGroupName]="i">
+          <input
+            type="text"
+            formControlName="ingrediant"
+            [placeholder]="'Ingrediant ' + (i + 1)"
+          />
+          <input formControlName="size" placeholder="1 teaspoon etc.." />
+        </div>
+
+        }
+        <button (click)="addIngrediant()">+ Add Ingrediant</button>
+      </div>
+      <div class="error-message"></div>
+    </div>
+
+    <!-- INSTRUCTIONS FIELD -->
+    <div class="form-group">
+      <label for="inscrtuctions">Inscrtuctions *</label>
+      <textarea
+        type="text"
+        id="inscrtuctions"
+        placeholder="Provide step by step instructions"
+        rows="5"
+        formControlName="instructions"
+      ></textarea>
+      <div class="error-message"></div>
+    </div>
+
+    <!-- DIFFICULTY FIELD -->
+    <div class="form-group">
+      <label for="difficulty">Difficulty *</label>
+
+      <select id="difficulty" formControlName="difficulty">
+        @for(difficulty of difficulties; track difficulty){
+        <option [value]="difficulty">{{ difficulty }}</option>
+        }
+      </select>
+
+      <div class="error-message"></div>
+    </div>
+
+    <!-- TEXT FIELD -->
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input
+        type="text"
+        id="image"
+        placeholder="Enter image url"
+        formControlName="imageUrl"
+      />
+      <div class="error-message"></div>
+    </div>
+
+    <!-- FORM ACTIONS -->
+    <div class="form-actions">
+      <button type="button">Cancel</button>
+      <button>Create Recipe</button>
+    </div>
+  </form>
+</div>
