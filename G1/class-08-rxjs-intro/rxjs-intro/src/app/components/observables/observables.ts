@@ -1,9 +1,10 @@
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { from, Observable, of, Subscriber } from 'rxjs';
+import { from, interval, Observable, of, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-observables',
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './observables.html',
   styleUrl: './observables.scss',
 })
@@ -33,6 +34,12 @@ export class Observables {
     emitter.complete();
   });
 
+  intervalObs$ = interval(1000);
+
+  intervalAsync$ = interval(500);
+
+  intervalSubscription: Subscription;
+
   ngOnInit() {
     // this.fromObs$.subscribe((value) => {
     //   console.log('from the fromObs subscripiton: ', value);
@@ -56,5 +63,12 @@ export class Observables {
       error: (err) => console.log('manual obs error: ', err),
       complete: () => console.log('obs completed'),
     });
+    this.intervalSubscription = this.intervalObs$.subscribe((value) => {
+      console.log(value);
+    });
+  }
+
+  ngOnDestroy() {
+    this.intervalSubscription.unsubscribe();
   }
 }
