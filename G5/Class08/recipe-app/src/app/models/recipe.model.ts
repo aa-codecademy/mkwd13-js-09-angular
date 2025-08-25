@@ -21,6 +21,7 @@ export interface CreateRecipeDto {
   ingredients: string[];
   instructions: string;
   imageUrl?: string;
-  createdDate: string;
   difficulty: Difficulty;
 }
+
+export type UpdateRecipeDto = CreateRecipeDto;

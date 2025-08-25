@@ -1,1 +1,43 @@
-<p>recipe-detail works!</p>
+<div>
+  <h3>Recipe details</h3>
+
+  <div class="recipe-card">
+    <h4>{{ recipe().title | titlecase }}</h4>
+    <p>{{ "hello world" | titlecase | uppercase }}</p>
+    <p>{{ recipe().description }}</p>
+
+    <ul>
+      @for(ingredient of recipe().ingredients; track ingredient){
+      <li>{{ ingredient }}</li>
+      }
+    </ul>
+
+    <p>{{ recipe().instructions }}</p>
+    <p>Created at: {{ recipe().createdDate | date }}</p>
+    <p>{{ 400 | currency : "EUR" }}</p>
+    <button>Edit Recipe</button>
+  </div>
+
+  <hr />
+  <h3>Async pipe</h3>
+  <div>
+    @if(recipeObs | async; as myrecipe){
+    <div class="recipe-card">
+      <h4>{{ myrecipe.title | titlecase }}</h4>
+      <p>{{ "hello world" | titlecase | uppercase }}</p>
+      <p>{{ myrecipe.description }}</p>
+
+      <ul>
+        @for(ingredient of myrecipe.ingredients; track ingredient){
+        <li>{{ ingredient }}</li>
+        }
+      </ul>
+
+      <p>{{ myrecipe.instructions }}</p>
+      <p>Created at: {{ myrecipe.createdDate | date }}</p>
+      <p>{{ 400 | currency : "EUR" }}</p>
+      <button>Edit Recipe</button>
+    </div>
+    }
+  </div>
+</div>

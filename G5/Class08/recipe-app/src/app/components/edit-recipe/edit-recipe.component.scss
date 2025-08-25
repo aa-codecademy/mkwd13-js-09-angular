@@ -1,0 +1,47 @@
+.recipe-form {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 600px;
+
+    form {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ddd;
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+        }
+    }
+}
+
+.form-header {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-btn {
+    max-height: fit-content;
+}
+
+.error-message {
+    color: red;
+    background: #f4f4f4;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px; 
+}
+
+.form-control {
+    padding: 8px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+.form-array-container {
+    margin-bottom: 10px;
+}

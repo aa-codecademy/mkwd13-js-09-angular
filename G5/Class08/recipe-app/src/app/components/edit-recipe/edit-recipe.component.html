@@ -1,1 +1,121 @@
-<p>edit-recipe works!</p>
+<div class="recipe-form">
+  <div class="form-header">
+    <h1>Update recipe</h1>
+    <button (click)="navigateToHome()" class="btn back-btn">
+      &larr; Back to Recipes
+    </button>
+  </div>
+
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <!-- TEXT FIELD -->
+    <div class="form-group">
+      <label for="title">Recipe Title *</label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Enter title"
+        formControlName="title"
+        class="form-control"
+      />
+      @if(getFieldError("title")){
+      <div class="error-message">{{ getFieldError("title") }}</div>
+      }
+    </div>
+
+    <!-- DESCRIPTION FIELD -->
+    <div class="form-group">
+      <label for="description">Description *</label>
+      <textarea
+        type="text"
+        id="description"
+        placeholder="Describe your recipe"
+        rows="3"
+        formControlName="description"
+        class="form-control"
+      ></textarea>
+      @if(getFieldError("description")){
+      <div class="error-message">{{ getFieldError("description") }}</div>
+      }
+    </div>
+
+    <!-- INGREDIANTS FIELD -->
+    <div class="form-group">
+      <label for="Ingrediants">Ingrediants *</label>
+      <div formArrayName="ingrediants">
+        @for(ingrediant of getIngrediants().controls; track ingrediant; let i =
+        $index){
+        <div [formGroupName]="i" class="form-array-container">
+          <input
+            type="text"
+            formControlName="ingrediant"
+            [placeholder]="'Ingrediant ' + (i + 1)"
+            class="form-control"
+          />
+          <!-- <input
+            formControlName="size"
+            placeholder="1 teaspoon etc.."
+            class="form-control"
+          /> -->
+
+          <button type="button" (click)="removeIngrediant(i)">
+            - Remove Ingrediant
+          </button>
+
+          @if(getIngredientError(i)){
+          <div class="error-message">{{ getIngredientError(i) }}</div>
+          }
+        </div>
+
+        }
+        <button type="button" (click)="addIngrediant()">
+          + Add Ingrediant
+        </button>
+      </div>
+    </div>
+
+    <!-- INSTRUCTIONS FIELD -->
+    <div class="form-group">
+      <label for="inscrtuctions">Inscrtuctions *</label>
+      <textarea
+        type="text"
+        id="inscrtuctions"
+        placeholder="Provide step by step instructions"
+        rows="5"
+        formControlName="instructions"
+        class="form-control"
+      ></textarea>
+      @if(getFieldError("instructions")){
+      <div class="error-message">{{ getFieldError("instructions") }}</div>
+      }
+    </div>
+
+    <!-- DIFFICULTY FIELD -->
+    <div class="form-group">
+      <label for="difficulty">Difficulty *</label>
+
+      <select id="difficulty" formControlName="difficulty">
+        @for(difficulty of difficulties; track difficulty){
+        <option [value]="difficulty">{{ difficulty }}</option>
+        }
+      </select>
+    </div>
+
+    <!-- TEXT FIELD -->
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input
+        type="text"
+        id="image"
+        placeholder="Enter image url"
+        formControlName="imageUrl"
+        class="form-control"
+      />
+    </div>
+
+    <!-- FORM ACTIONS -->
+    <div class="form-actions">
+      <button type="button" (click)="navigateToHome()">Cancel</button>
+      <button [disabled]="recipeForm.invalid">Update Recipe</button>
+    </div>
+  </form>
+</div>
