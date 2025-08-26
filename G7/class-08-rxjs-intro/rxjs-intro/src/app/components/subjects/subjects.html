@@ -1,0 +1,29 @@
+<section class="container">
+  <h2>Subjects</h2>
+  <div>
+    <div class="list-container">
+      <h3>Subject List</h3>
+      <ul>
+        @for (name of nameArr(); track $index) {
+        <li>{{ name }}</li>
+        }
+      </ul>
+      <div>
+        <input type="text" [(ngModel)]="nameValue" />
+        <button (click)="onAddName()">Add Name</button>
+      </div>
+    </div>
+    <div class="list-container">
+      <h3>Behavior Subject List</h3>
+      <ul>
+        @for (fruit of fruitsSubject$ | async; track $index) {
+        <li>{{ fruit }}</li>
+        }
+      </ul>
+      <div>
+        <input type="text" [(ngModel)]="fruitValue" />
+        <button (click)="onAddFruit()">Add Fruit</button>
+      </div>
+    </div>
+  </div>
+</section>
