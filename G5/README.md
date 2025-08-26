@@ -4,5 +4,5 @@ Frontend development using Angular
 
 ## Team
 
-- Trainer: [NAME](mailto:mail) | GH: [@username](https://github.com/<username>)
-- Assistant: [NAME](mailto:mail) | GH: [@username](https://github.com/<>)
+- Trainer: [Gjorge Dimitrov](mailto:dimitrov.gjorge@protonmail.com) | GH: [@username](https://github.com/<username>)
+- Assistant: [Bojan Jankov](mailto:jankovbojan4@gmail.com) | GH: [@username](https://github.com/<>)
