@@ -1,5 +1,13 @@
-import { Injectable } from '@angular/core';
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
+import { computed, Injectable } from '@angular/core';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withHooks,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { Dog } from '../types/dog';
 
 export interface DogState {
@@ -26,6 +34,7 @@ const initialState: DogState = {
 export class DogStore extends signalStore(
   { providedIn: 'root' },
   withState(initialState),
+  withDevtools('dogs'),
   withMethods((store) => ({
     addDog(name: string, breed: string, age: number) {
       const newDog: Dog = {
@@ -62,6 +71,45 @@ export class DogStore extends signalStore(
         dogs,
       });
     },
+  })),
+  withHooks({
+    onInit(store) {
+      const stored = localStorage.getItem('dogs');
+
+      console.log(stored);
+
+      if (stored) {
+        try {
+          const parsedDogs = JSON.parse(stored);
+
+          patchState(store, { dogs: parsedDogs });
+        } catch (error) {
+          console.error('issue while parsing dogs JSON', error);
+        }
+      }
+    },
+
+    onDestroy(store) {
+      console.log('destroy', store);
+      const dogs = store.dogs();
+
+      // if (dogs.length > 0) {
+      localStorage.setItem('dogs', JSON.stringify(dogs));
+      // }
+    },
+  }),
+  withComputed((store) => ({
+    dogStats: computed(() => {
+      const dogs = store.dogs();
+
+      const totalDogs = dogs.length;
+      const mostWaledDog = dogs.sort((a, b) => b.walkCount - a.walkCount)[0];
+
+      return {
+        totalDogs,
+        mostWaledDog,
+      };
+    }),
   })),
 ) {
   constructor() {
