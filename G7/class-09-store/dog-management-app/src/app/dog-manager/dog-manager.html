@@ -1,0 +1,17 @@
+<div>
+  <div>
+    <h2>🐕‍🦺 Add New Dog</h2>
+    <div>
+      <input type="text" [(ngModel)]="dogName" placeholder="Dog name..." />
+      <input type="text" [(ngModel)]="dogBreed" placeholder="Dog breed..." />
+      <input
+        type="number"
+        [(ngModel)]="dogAge"
+        min="1"
+        max="25"
+        placeholder="Dog age..."
+      />
+      <button (click)="handleAddDog()">Add Dog</button>
+    </div>
+  </div>
+</div>

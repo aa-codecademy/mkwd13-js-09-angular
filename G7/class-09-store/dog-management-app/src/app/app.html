@@ -1,0 +1,23 @@
+<div>
+  <header>
+    <div>
+      <h1>Dog Management App</h1>
+      <p>Track your furry friends' daily activities with fun and ease!</p>
+    </div>
+  </header>
+
+  <nav>
+    <div>
+      <button (click)="currentView = 'manager'">🏠 Manage Dogs</button>
+      <button (click)="currentView = 'stats'">📊 View Stats</button>
+    </div>
+  </nav>
+
+  <main>
+    @if (currentView === 'manager') {
+    <app-dog-manager />
+    } @else if (currentView === 'stats') {
+    <app-stats />
+    }
+  </main>
+</div>
