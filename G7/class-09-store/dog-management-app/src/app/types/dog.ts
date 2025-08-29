@@ -4,4 +4,8 @@ export interface Dog {
   breed: string;
   age: number;
   createdAt: Date;
+  walkCount: number;
+  lastWalked?: Date;
+  feedCount: number;
+  lastFed?: Date;
 }

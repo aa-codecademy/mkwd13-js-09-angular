@@ -1,17 +1,68 @@
-<div>
-  <div>
+<div class="dogs-section">
+  <div class="add-dog-section">
     <h2>🐕‍🦺 Add New Dog</h2>
-    <div>
-      <input type="text" [(ngModel)]="dogName" placeholder="Dog name..." />
-      <input type="text" [(ngModel)]="dogBreed" placeholder="Dog breed..." />
+    <div class="add-form">
+      <input
+        type="text"
+        [(ngModel)]="dogName"
+        placeholder="Dog name..."
+        class="name-input"
+      />
+      <input
+        type="text"
+        [(ngModel)]="dogBreed"
+        placeholder="Dog breed..."
+        class="breed-input"
+      />
       <input
         type="number"
         [(ngModel)]="dogAge"
         min="1"
         max="25"
         placeholder="Dog age..."
+        class="age-input"
       />
-      <button (click)="handleAddDog()">Add Dog</button>
+      <button class="add-btn" (click)="handleAddDog()">Add Dog</button>
     </div>
+  </div>
+
+  <h2>🐕‍🦺 Your Dogs</h2>
+  <div class="dogs-grid">
+    @for (dog of store.dogs(); track dog.id) {
+      <div class="dog-card">
+        <div class="dog-header">
+          <div class="dog-info">
+            <h3>{{ dog.name }}</h3>
+            <p>{{ dog.breed }}</p>
+            <p>{{ dog.age }} years old</p>
+          </div>
+          <div class="dog-actions">
+            <button class="remove-dog" (click)="store.removeDog(dog.id)">
+              ❌
+            </button>
+          </div>
+        </div>
+        <div class="dog-stats">
+          <div>
+            <span>🍽️ Fed: </span>
+            <span>{{ dog.feedCount }} times </span>
+            @if (dog.lastFed) {
+              <span>Last: {{ dog.lastFed | date: "shortTime" }}</span>
+            }
+          </div>
+          <div>
+            <span>🚶 Walked: </span>
+            <span>{{ dog.walkCount }} times </span>
+            @if (dog.lastWalked) {
+              <span>Last: {{ dog.lastWalked | date: "shortTime" }}</span>
+            }
+          </div>
+        </div>
+        <div class="dog-actions-main">
+          <button>🍽️ Feed Now</button>
+          <button (click)="store.walkDog(dog.id)">🚶 Walk Now</button>
+        </div>
+      </div>
+    }
   </div>
 </div>

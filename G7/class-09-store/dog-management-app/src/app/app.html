@@ -1,19 +1,31 @@
-<div>
-  <header>
-    <div>
+<div class="app-container">
+  <header class="app-header">
+    <div class="header-content">
       <h1>Dog Management App</h1>
       <p>Track your furry friends' daily activities with fun and ease!</p>
     </div>
   </header>
 
-  <nav>
-    <div>
-      <button (click)="currentView = 'manager'">🏠 Manage Dogs</button>
-      <button (click)="currentView = 'stats'">📊 View Stats</button>
+  <nav class="app-nav">
+    <div class="nav-content">
+      <button
+        [class.active]="currentView === 'manager'"
+        class="nav-btn"
+        (click)="currentView = 'manager'"
+      >
+        🏠 Manage Dogs
+      </button>
+      <button
+        [class.active]="currentView === 'stats'"
+        class="nav-btn"
+        (click)="currentView = 'stats'"
+      >
+        📊 View Stats
+      </button>
     </div>
   </nav>
 
-  <main>
+  <main class="app-main">
     @if (currentView === 'manager') {
     <app-dog-manager />
     } @else if (currentView === 'stats') {
