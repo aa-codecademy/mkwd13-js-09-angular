@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <h2>🐕‍🦺 Your Dogs</h2>
+  <h2>🐕‍🦺 Your {{ store.totalDogs() }} Dog(s)</h2>
   <div class="dogs-grid">
     @for (dog of store.dogs(); track dog.id) {
       <div class="dog-card">
@@ -43,24 +43,32 @@
           </div>
         </div>
         <div class="dog-stats">
-          <div>
-            <span>🍽️ Fed: </span>
-            <span>{{ dog.feedCount }} times </span>
+          <div class="stat-item">
+            <span class="stat-label">🍽️ Fed: </span>
+            <span class="stat-value">{{ dog.feedCount }} times </span>
             @if (dog.lastFed) {
-              <span>Last: {{ dog.lastFed | date: "shortTime" }}</span>
+              <span class="stat-time"
+                >Last: {{ dog.lastFed | date: "shortTime" }}</span
+              >
             }
           </div>
-          <div>
-            <span>🚶 Walked: </span>
-            <span>{{ dog.walkCount }} times </span>
+          <div class="stat-item">
+            <span class="stat-label">🚶 Walked: </span>
+            <span class="stat-value">{{ dog.walkCount }} times </span>
             @if (dog.lastWalked) {
-              <span>Last: {{ dog.lastWalked | date: "shortTime" }}</span>
+              <span class="stat-time"
+                >Last: {{ dog.lastWalked | date: "shortTime" }}</span
+              >
             }
           </div>
         </div>
         <div class="dog-actions-main">
-          <button>🍽️ Feed Now</button>
-          <button (click)="store.walkDog(dog.id)">🚶 Walk Now</button>
+          <button class="action-btn feed-btn" (click)="store.feedDog(dog.id)">
+            🍽️ Feed Now
+          </button>
+          <button class="action-btn walk-btn" (click)="store.walkDog(dog.id)">
+            🚶 Walk Now
+          </button>
         </div>
       </div>
     }

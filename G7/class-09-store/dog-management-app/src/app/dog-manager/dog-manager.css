@@ -11,6 +11,10 @@
   margin-bottom: 1rem;
 }
 
+.dogs-section > h2 {
+  color: white;
+}
+
 .dogs-section {
   margin-top: 2rem;
 }
@@ -50,6 +54,9 @@
   border-radius: 8px;
   padding: 1rem;
   cursor: pointer;
+  background: #f0f0f0;
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 .dog-card.selected {

@@ -1,8 +1,9 @@
 import { withDevtools } from '@angular-architects/ngrx-toolkit';
-import { Injectable } from '@angular/core';
+import { computed, Injectable } from '@angular/core';
 import {
   patchState,
   signalStore,
+  withComputed,
   withHooks,
   withMethods,
   withState,
@@ -11,10 +12,12 @@ import { Dog } from '../types/dog';
 
 export interface DogState {
   dogs: Dog[];
+  isLoading: boolean;
 }
 
 const initialState: DogState = {
   dogs: [
+    // hardcoded values just used for testing purposes
     {
       id: 1,
       name: 'Boem',
@@ -38,6 +41,7 @@ const initialState: DogState = {
       lastFed: new Date(),
     },
   ],
+  isLoading: false,
 };
 
 @Injectable({
@@ -46,7 +50,31 @@ const initialState: DogState = {
 export class DogStore extends signalStore(
   { providedIn: 'root' },
   withState(initialState),
-  withDevtools('dogs'),
+  withDevtools('dogs'), // used to enable Redux Dev Tools
+  withHooks({
+    // when store is initialized
+    onInit(state) {
+      const stored = localStorage.getItem('dogs');
+
+      if (stored) {
+        try {
+          const parsedDogs = JSON.parse(stored);
+          patchState(state, {
+            dogs: [...state.dogs(), ...parsedDogs],
+          });
+        } catch (err) {
+          console.error('Error while parsing dogs data', err);
+        }
+      }
+    },
+
+    // when the store is destroyed
+    onDestroy(state) {
+      const stringifiedDogs = JSON.stringify(state.dogs());
+
+      localStorage.setItem('dogs', stringifiedDogs);
+    },
+  }),
   withMethods((state) => ({
     addDog(name: string, breed: string, age: number) {
       console.log('Inside of the store method addDog', name, breed, age);
@@ -91,31 +119,41 @@ export class DogStore extends signalStore(
         dogs,
       });
     },
-  })),
-  withHooks({
-    // when store is initialized
-    onInit(state) {
-      const stored = localStorage.getItem('dogs');
-
-      if (stored) {
-        try {
-          const parsedDogs = JSON.parse(stored);
-          patchState(state, {
-            dogs: [...state.dogs(), ...parsedDogs],
-          });
-        } catch (err) {
-          console.error('Error while parsing dogs data', err);
+    feedDog(id: number) {
+      const dogs = state.dogs().map((dog) => {
+        if (dog.id === id) {
+          const newDog: Dog = {
+            ...dog,
+            feedCount: dog.feedCount + 1,
+            lastFed: new Date(),
+          };
+          return newDog;
         }
-      }
-    },
 
-    // when the store is destroyed
-    onDestroy(state) {
-      const stringifiedDogs = JSON.stringify(state.dogs());
+        return dog;
+      });
 
-      localStorage.setItem('dogs', stringifiedDogs);
+      patchState(state, {
+        dogs,
+      });
     },
-  }),
+  })),
+  withComputed((state) => ({
+    totalDogs: computed(() => state.dogs().length),
+    totalWalks: computed(() =>
+      state.dogs().reduce((sum: number, dog: Dog) => {
+        return sum + dog.walkCount;
+      }, 0),
+    ),
+    totalFeedings: computed(() =>
+      state.dogs().reduce((sum: number, dog: Dog) => {
+        return sum + dog.feedCount;
+      }, 0),
+    ),
+    mostWalkedDog: computed(
+      () => state.dogs().sort((a, b) => b.walkCount - a.walkCount)[0],
+    ),
+  })),
 ) {
   constructor() {
     super();
