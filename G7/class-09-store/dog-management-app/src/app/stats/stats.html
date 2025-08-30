@@ -1,0 +1,39 @@
+<div class="dog-stats">
+  <h2>Dog Activity Dashboard</h2>
+
+  <div class="stats-grid">
+    <div class="stat-card total-dogs">
+      <div class="stat-icon">🐕</div>
+      <div class="stat-content">
+        <div class="stat-number">{{ store.totalDogs() }}</div>
+        <div class="stat-label">Total Dogs</div>
+      </div>
+    </div>
+
+    <div class="stat-card total-dogs">
+      <div class="stat-icon">🐕</div>
+      <div class="stat-content">
+        <div class="stat-number">{{ store.totalWalks() }}</div>
+        <div class="stat-label">Total Walks</div>
+      </div>
+    </div>
+
+    <div class="stat-card total-dogs">
+      <div class="stat-icon">🐕</div>
+      <div class="stat-content">
+        <div class="stat-number">{{ store.totalFeedings() }}</div>
+        <div class="stat-label">Total Feedings</div>
+      </div>
+    </div>
+
+    <div class="stat-card total-dogs">
+      <div class="stat-icon">🐕</div>
+      <div class="stat-content">
+        <div class="stat-number">
+          {{ store.mostWalkedDog().name }} the {{ store.mostWalkedDog().breed }}
+        </div>
+        <div class="stat-label">Most Walked Dog</div>
+      </div>
+    </div>
+  </div>
+</div>
