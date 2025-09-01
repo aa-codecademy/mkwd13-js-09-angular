@@ -1,5 +1,8 @@
+@let ctrls = expenseForm.controls;
+@let basicCtrls = expenseForm.controls.basicData.controls;
+
 <form [formGroup]="expenseForm" (ngSubmit)="onFormSubmit()">
-  <div class="basic-data">
+  <div class="basic-data" formGroupName="basicData">
     <div class="form-group">
       <label for="expense-title">Title</label>
       <input
@@ -10,9 +13,12 @@
         autocomplete="off"
       />
     </div>
-    @if (expenseForm.controls.title.touched) {
-      @if (expenseForm.controls.title.errors?.required) {
+    @if (basicCtrls.title.touched) {
+      @if (basicCtrls.title.errors?.required) {
         <p class="help-block">Title is required</p>
+      }
+      @if (basicCtrls.title.errors?.blockedWord) {
+        <p class="help-block">This type of expense is not allowed</p>
       }
     }
     <div class="form-group">
@@ -25,14 +31,11 @@
         autocomplete="off"
       />
     </div>
-    @if (expenseForm.controls.amount.touched) {
-      @if (expenseForm.controls.amount.errors?.required) {
+    @if (basicCtrls.amount.touched) {
+      @if (basicCtrls.amount.errors?.required) {
         <p class="help-block">Amount is required</p>
       }
-      @if (
-        expenseForm.controls.amount.errors?.min ||
-        expenseForm.controls.amount.errors?.max
-      ) {
+      @if (basicCtrls.amount.errors?.min || basicCtrls.amount.errors?.max) {
         <p class="help-block">Amount must be betewen 1 and 500</p>
       }
     }
@@ -70,9 +73,7 @@
       rows="5"
       placeholder="Please enter your comment here..."
     ></textarea>
-    <p>
-      {{ expenseForm.controls.comment.value?.length }} / {{ maxCommentLength }}
-    </p>
+    <p>{{ ctrls.comment.value?.length }} / {{ maxCommentLength }}</p>
   </div>
   <div class="form-group">
     @for (type of paymentTypes; track type) {
@@ -88,5 +89,12 @@
       </div>
     }
   </div>
+
   <button class="btn" type="submit">Submit</button>
+  <button class="btn" type="button" (click)="populateForm()">
+    Load Form With Data
+  </button>
+  <!-- <button [disabled]="expenseForm.invalid" class="btn" type="submit">
+    Submit
+  </button> -->
 </form>
