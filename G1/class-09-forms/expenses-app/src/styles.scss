@@ -45,6 +45,10 @@ form {
   border-radius: 8px;
 }
 
+textarea {
+  resize: vertical;
+}
+
 .basic-data {
   background-color: $color-green;
   padding: 10px;

@@ -10,7 +10,11 @@
         autocomplete="off"
       />
     </div>
-
+    @if (expenseForm.controls.title.touched) {
+      @if (expenseForm.controls.title.errors?.required) {
+        <p class="help-block">Title is required</p>
+      }
+    }
     <div class="form-group">
       <label for="expense-amount">Amount</label>
       <input
@@ -21,6 +25,17 @@
         autocomplete="off"
       />
     </div>
+    @if (expenseForm.controls.amount.touched) {
+      @if (expenseForm.controls.amount.errors?.required) {
+        <p class="help-block">Amount is required</p>
+      }
+      @if (
+        expenseForm.controls.amount.errors?.min ||
+        expenseForm.controls.amount.errors?.max
+      ) {
+        <p class="help-block">Amount must be betewen 1 and 500</p>
+      }
+    }
 
     <div class="form-group">
       <label for="expense-date">Date</label>
@@ -32,6 +47,46 @@
         autocomplete="off"
       />
     </div>
+  </div>
+  <div class="form-group">
+    <label for="expense-priority"></label>
+    <select
+      formControlName="priority"
+      type="text"
+      class="form-control"
+      id="expense-priority"
+    >
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="expense-comment">Comment</label>
+    <textarea
+      formControlName="comment"
+      class="form-control"
+      id="expense-comment"
+      rows="5"
+      placeholder="Please enter your comment here..."
+    ></textarea>
+    <p>
+      {{ expenseForm.controls.comment.value?.length }} / {{ maxCommentLength }}
+    </p>
+  </div>
+  <div class="form-group">
+    @for (type of paymentTypes; track type) {
+      <div>
+        <input
+          formControlName="type"
+          type="radio"
+          [id]="type + '-radio'"
+          name="type"
+          [value]="type"
+        />
+        <label [htmlFor]="type + '-radio'">{{ type | titlecase }}</label>
+      </div>
+    }
   </div>
   <button class="btn" type="submit">Submit</button>
 </form>
