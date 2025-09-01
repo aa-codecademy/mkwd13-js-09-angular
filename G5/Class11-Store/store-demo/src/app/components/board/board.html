@@ -1,0 +1,41 @@
+<h1>Tic-Tac-Toe</h1>
+
+<div class="board">
+  @for(cell of gameStore.board(); track $index){
+  <div (click)="makeMove($index)" class="cell">
+    {{ cell }}
+  </div>
+  }
+</div>
+
+<button (click)="resetGame()">Reset</button>
+
+<section>
+  @if(gameStore.winner() && gameStore.isGameOver() && gameStore.winner() !== 'draw'){
+  <h3>Winner is: {{ gameStore.winner() }}</h3>
+  } @if(gameStore.winner() === 'draw'){
+  <h3>The game is draw.</h3>
+
+  }
+</section>
+
+<!-- USING BOARD FROM SERVICE -->
+<!-- <div class="board">
+  @for(cell of gameService.gameStore.board(); track $index){
+  <div (click)="makeMove($index)" class="cell">
+    {{ cell }}
+  </div>
+  }
+</div>
+
+<button (click)="resetGame()">Reset</button>
+
+<section>
+  @if(gameService.gameStore.winner() && gameService.gameStore.isGameOver() &&
+  gameService.gameStore.winner() !== 'draw'){
+  <h3>Winner is: {{ gameService.gameStore.winner() }}</h3>
+  } @if(gameService.gameStore.winner() === 'draw'){
+  <h3>The game is draw.</h3>
+
+  }
+</section> -->
