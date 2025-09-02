@@ -28,14 +28,18 @@ export class Signals implements OnInit {
   interval = toSignal(this.interval$);
 
   constructor() {
+    // In Angular, an effect is a reactive function that automatically runs whenever any signal it depends on changes.
+    // Effects are used for side effects, such as logging, updating the DOM, or making API calls
+    // and they help keep your code reactive and in sync with your application's state.
+
     // effect(() => {
     //   console.log('This is the interval value: ', this.interval());
     // });
 
-    // effect(() => {
-    //   const newNum = this.randomNum() * 10;
-    //   console.log('THIS IS THE RANDOM NUM', newNum);
-    // });
+    effect(() => {
+      const newNum = this.randomNum() * 10;
+      console.log('THIS IS THE RANDOM NUM', newNum);
+    });
   }
 
   ngOnInit(): void {
