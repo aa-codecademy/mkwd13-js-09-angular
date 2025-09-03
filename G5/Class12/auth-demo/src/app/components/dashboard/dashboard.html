@@ -1,0 +1,25 @@
+<main>
+  <header>
+    <h1>Dashboard</h1>
+
+    <div class="user-info">
+      <span
+        >Welcome, <strong> {{ authStore.user()?.username }} </strong></span
+      >
+      <span>Role: {{ authStore.user()?.role }}</span>
+    </div>
+
+    <button (click)="logout()">Logout</button>
+  </header>
+
+  <div>
+    <h3>Navigation</h3>
+    <a routerLink="/user-area">User area (User + Admin access)</a>
+    <br />
+    <a routerLink="/admin-panel">Admin Panel (Admin only)</a>
+  </div>
+
+  <div>
+    <button (click)="makeApiCall()">Make api call</button>
+  </div>
+</main>
