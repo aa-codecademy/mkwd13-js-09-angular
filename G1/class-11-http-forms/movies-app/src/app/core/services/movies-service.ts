@@ -1,11 +1,16 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { Movie } from '../../feature/movies/models/movie-model';
+import {
+  Movie,
+  ReviewFormValue,
+} from '../../feature/movies/models/movie-model';
 import { MoviesApiService } from './movies-api-service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MoviesService {
+  private router = inject(Router);
   private apiService = inject(MoviesApiService);
 
   movies = signal<Movie[]>([]);
@@ -46,6 +51,28 @@ export class MoviesService {
     this.selectedMovie.set(movie);
   }
 
+  createMovie(reqBody: ReviewFormValue) {
+    this.apiService.postMovie(reqBody).subscribe({
+      next: (createdMovie) => {
+        console.log('returned value from creating movie', createdMovie);
+        this.router.navigate(['movies', createdMovie.id]);
+      },
+      error: (err) => console.log(err),
+    });
+  }
+
+  updateMovie(id: string, reqBody: Partial<Movie>) {
+    this.apiService.patchMovie(id, reqBody).subscribe({
+      next: (updatedMovie) => {
+        console.log('this is the result of the patch operation', updatedMovie);
+        this.selectedMovie.set(updatedMovie);
+        this.router.navigate(['movies', updatedMovie.id]);
+      },
+
+      error: (err) => console.log(err),
+    });
+  }
+
   addLikeDislike(type: 'LIKE' | 'DISLIKE') {
     const reqMovie: Movie = {
       ...this.selectedMovie(),
@@ -55,7 +82,7 @@ export class MoviesService {
           : this.selectedMovie().likeCount - 1,
     };
 
-    this.apiService.updateMovie(this.selectedMovie().id, reqMovie).subscribe({
+    this.apiService.putMovie(this.selectedMovie().id, reqMovie).subscribe({
       next: (value) => this.selectedMovie.set(value),
       error: (err) => console.log(err),
     });
