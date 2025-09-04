@@ -16,7 +16,7 @@
     @if(expenseTitle.invalid && expenseTitle.touched) {
     <p class="help-block">Title is required</p>
     }
-    <div class="form-group">
+    <div #divRef class="form-group">
       <label for="expense-amount">Amount</label>
       <input
         type="number"
