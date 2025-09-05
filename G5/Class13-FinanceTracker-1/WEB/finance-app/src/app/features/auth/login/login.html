@@ -1,0 +1,40 @@
+<main class="login-container">
+  <section class="login-card">
+    <h2>Login to Budget App</h2>
+  </section>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="Enter Email" formControlName="email" />
+
+      @if(email?.touched && email?.invalid){
+      <div class="error-text">
+        @if(email?.errors?.['required']){ Email is required } @if(email?.errors?.['email']){ Please
+        enter valid email }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter Password"
+        formControlName="password"
+      />
+
+      @if(password?.touched && password?.invalid){
+      <div class="error-text">Password is required</div>
+      }
+    </div>
+
+    <!-- TODO: If currently logging in (ongoing request) show a spinner -->
+    <button class="btn btn-primary">Login</button>
+  </form>
+
+  <section class="register-link">
+    Don't have an account? <a routerLink="/register">Register here!</a>
+  </section>
+</main>
