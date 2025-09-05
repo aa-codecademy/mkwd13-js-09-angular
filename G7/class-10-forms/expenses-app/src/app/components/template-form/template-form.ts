@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, viewChild } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-template-form',
@@ -15,12 +15,17 @@ export class TemplateForm implements OnInit {
 
   // ViewChild lets you access a child component, directive or DOM element directly from the parent component's TypeScript class
   expenseForm = viewChild<NgForm>('expenseForm');
+  expenseTitle = viewChild<NgModel>('expenseTitle');
+  divRef = viewChild<HTMLElement>('divRef');
 
-  paymentTypes: string[] = ['cash', 'card'];
+  paymentTypes: string[] = ['cash', 'card', 'credit'];
 
   ngOnInit(): void {
     console.log(this.expenseForm());
     console.log(this.expenseForm()?.invalid);
+
+    // console.log('EXPENSE TITLE: ', this.expenseTitle());
+    // console.log('DIV REF: ', this.divRef());
   }
 
   onFormSubmit(form: NgForm) {
