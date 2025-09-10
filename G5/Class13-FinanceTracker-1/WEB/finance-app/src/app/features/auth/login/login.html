@@ -3,6 +3,12 @@
     <h2>Login to Budget App</h2>
   </section>
 
+  @if(errorMessage){
+  <div class="error-message">
+    {{ errorMessage }}
+  </div>
+  }
+
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="email">Email</label>

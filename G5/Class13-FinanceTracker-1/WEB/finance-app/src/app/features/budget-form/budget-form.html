@@ -1,1 +1,47 @@
-<p>budget-form works!</p>
+<main class="container">
+  <div class="form-header">Create New Budget</div>
+
+  <!-- TODO: Handle errors -->
+  <form [formGroup]="createBudgetForm" (ngSubmit)="onSubmit()">
+    <!-- Budget name -->
+    <div class="form-group">
+      <label for="name">Budget Name *</label>
+      <input
+        class="form-input"
+        type="text"
+        id="name"
+        placeholder="e.g. Monthly  Expense"
+        formControlName="name"
+      />
+    </div>
+
+    <!-- Total amount -->
+    <div class="form-group">
+      <label for="totalAmount">Total Amount *</label>
+      <input
+        class="form-input"
+        type="number"
+        placeholder="2000"
+        id="totalAmount"
+        formControlName="totalAmount"
+      />
+    </div>
+
+    <!-- Date range from -->
+    <div class="form-group">
+      <label for="fromDate">From date *</label>
+      <input id="fromDate" type="date" formControlName="fromDate" />
+    </div>
+
+    <!-- Date range to -->
+    <div class="form-group">
+      <label for="toDate">To date *</label>
+      <input type="date" id="toDate" formControlName="toDate" />
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-secondary">Cancel</button>
+      <button class="btn btn-primary">Create</button>
+    </div>
+  </form>
+</main>

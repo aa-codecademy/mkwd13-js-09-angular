@@ -1,0 +1,79 @@
+.budget-actions {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.budgets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.budget-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(108, 105, 105, 0.923);
+  padding: 1.5rem;
+
+  &.active {
+    border-left: 4px solid rgb(141, 198, 56);
+  }
+
+  &.upcoming {
+    border-left: 4px solid orange;
+  }
+
+  &.expired {
+    border-left: 4px solid rgb(185, 48, 48);
+  }
+
+  .budget-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    h3 {
+      color: #333;
+      font-size: 1.5rem;
+    }
+
+    .budget-status {
+      text-transform: uppercase;
+
+      &.active {
+        color: rgb(141, 198, 56);
+      }
+
+      &.upcoming {
+        color: orange;
+      }
+
+      &.expired {
+        color: rgb(185, 48, 48);
+      }
+    }
+  }
+
+  .budget-details {
+    margin-bottom: 1rem;
+    .amount {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .date-range {
+      color: #666;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+
+.budget-summary {
+    margin-bottom: 1rem;
+}
+.summary-card {
+
+}

@@ -1,1 +1,48 @@
-<p>budgets works!</p>
+@if(budgetStore.isLoading()){
+<div class="loading">Loading budgets...</div>
+} @if(budgetStore.error()){
+<div class="error-message">
+  {{ budgetStore.error() }}
+</div>
+}
+
+<section class="budget-summary">
+  <div>
+    <!-- TODO: Show number of expired/upcomming budgets -->
+
+    <div class="summary-card">
+      <h3>Active Budgets</h3>
+      <div class="count">{{ budgetStore.activeBudgets().length }}</div>
+    </div>
+
+    <div class="summary-card">
+      <h3>Total Budgets</h3>
+      <div class="count">{{ budgetStore.budgets().length }}</div>
+    </div>
+  </div>
+</section>
+
+<button class="btn btn-primary" (click)="navigateToCreateBudget()">+ Create Budget</button>
+
+<!-- IF THERE ARE BUDGETS -->
+@if(budgetStore.budgets().length > 0){ @for (budget of budgetStore.budgets(); track budget.id()) {
+<section class="budgets-grid">
+  <div class="budget-card" [class]="budget.budgetStatus()">
+    <div class="budget-header">
+      <h3>{{ budget.name() }}</h3>
+      <div class="budget-status" [class]="budget.budgetStatus()">{{ budget.budgetStatus() }}</div>
+    </div>
+
+    <div class="budget-details">
+      <div class="amount">{{ budget.totalAmount() | currency }}</div>
+      <div class="date-range">{{ budget.fromDate() | date }} - {{ budget.toDate() | date }}</div>
+    </div>
+
+    <div class="budget-actions">
+      <button class="btn btn-small btn-secondary">View details</button>
+      <button class="btn btn-small btn-secondary">Edit</button>
+      <button class="btn btn-small btn-danger">Delete</button>
+    </div>
+  </div>
+</section>
+} }

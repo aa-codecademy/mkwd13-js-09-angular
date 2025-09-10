@@ -1,11 +1,16 @@
-*, *::before, *::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    .user-info {
+      color: #333;
+      font-weight: 500;
+    }
+  }
 }

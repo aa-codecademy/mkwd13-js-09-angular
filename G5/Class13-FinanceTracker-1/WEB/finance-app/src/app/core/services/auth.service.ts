@@ -39,7 +39,7 @@ export class AuthService {
         this.router.navigate(['/budgets']);
       },
       error: (error) => {
-        this.error.set('Login failed. Try again later.');
+        this.error.set(error.error.message);
         console.error(error);
       },
     });
@@ -57,5 +57,17 @@ export class AuthService {
     const userJson = localStorage.getItem(this.USER_KEY);
 
     return userJson ? JSON.parse(userJson) : null;
+  }
+
+  getToken() {
+    return localStorage.getItem(this.TOKEN_KEY);
+  }
+
+  logout() {
+    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.USER_KEY);
+    this.currentUser.set(null);
+    this.isAuthenticated.set(false);
+    this.router.navigate(['/login']);
   }
 }

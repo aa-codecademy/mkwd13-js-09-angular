@@ -45,4 +45,8 @@ export class Login {
   get password() {
     return this.loginForm.get('password');
   }
+
+  get errorMessage() {
+    return this.authService.error();
+  }
 }
