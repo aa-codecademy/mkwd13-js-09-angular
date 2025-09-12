@@ -1,0 +1,29 @@
+<header class="header">
+  <div class="logo" routerLink="/">
+    <img src="/images/logo.png" alt="reviews logo" />
+  </div>
+  <nav>
+    @if (userData()) {
+      <div class="nav-link">
+        <a routerLink="/reviews" routerLinkActive="active">Reviews</a>
+      </div>
+      <div class="nav-link">
+        <a routerLink="/add-review" routerLinkActive="active">Add Review</a>
+      </div>
+      <div class="nav-link" (click)="onLogout()">
+        <a>Logout</a>
+      </div>
+      <div class="nav-link user">
+        <i class="fa fa-user"></i>
+        <div>{{ userData().username }}</div>
+      </div>
+    } @else {
+      <div class="nav-link">
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+      </div>
+      <div class="nav-link">
+        <a routerLink="/register" routerLinkActive="active">Register</a>
+      </div>
+    }
+  </nav>
+</header>
