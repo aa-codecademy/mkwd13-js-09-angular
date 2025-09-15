@@ -39,7 +39,9 @@
     </div>
 
     <div class="budget-actions">
-      <button class="btn btn-small btn-secondary">View details</button>
+      <button class="btn btn-small btn-secondary" (click)="navigateToBudgetDetails(budget.id())">
+        View details
+      </button>
       <button class="btn btn-small btn-secondary">Edit</button>
       <button class="btn btn-small btn-danger">Delete</button>
     </div>

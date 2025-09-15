@@ -1,1 +1,62 @@
-<main class="container"></main>
+<section>
+  @if(selectedBudget(); as budget){
+  <div class="budget-header">
+    <div class="header-content">
+      <span><a routerLink="/budgets">Back to budgets</a> </span>
+      <h1>{{ budget.name() }}</h1>
+
+      <div class="budget-dates">
+        <span>From {{ budget.fromDate() | date }} - to {{ budget.toDate() | date }}</span>
+        <br />
+        <span>{{ budget.daysRemaining() }} days remaining</span>
+      </div>
+    </div>
+
+    <button class="btn btn-danger">Delete budget</button>
+    <button class="btn btn-secondary">Edit budget</button>
+  </div>
+
+  <hr />
+  <br />
+  <div class="overview-cards">
+    <div class="budget-card">
+      <h3>Total budget</h3>
+      <span>{{ budget.totalAmount() | currency }}</span>
+    </div>
+
+    <div class="budget-card">
+      <h3>Total Income</h3>
+      <span>{{ budget.totalIncome() | currency }}</span>
+    </div>
+
+    <div class="budget-card">
+      <h3>Total Spent</h3>
+      <span>{{ budget.totalSpent() | currency }}</span>
+    </div>
+
+    <div class="budget-card">
+      <h3>Remaining amount</h3>
+      <span>{{ budget.remainingAmount() | currency }}</span>
+    </div>
+  </div>
+
+  <br />
+  <hr />
+  <button (click)="onAddTransaction()">Add Transaction</button>
+  <br />
+  @for (transaction of budget.transactions(); track transaction.id) {
+
+  <div class="transaction-card">
+    <h3>{{ transaction.title }}</h3>
+    <p>{{ transaction.type }}</p>
+    <p>{{ transaction.amount }}</p>
+    <p>{{ transaction.description }}</p>
+    <p>{{ transaction.createdAt | date }}</p>
+    <button class="btn btn-secondary">Edit Transaction</button>
+
+    <button class="btn btn-danger">Delete Transaction</button>
+  </div>
+  } } @else {
+  <div><p>Loading budget details</p></div>
+  }
+</section>

@@ -30,6 +30,20 @@ export class BudgetService {
     });
   }
 
+  getBudget(budgetId: string) {
+    this.http.get<BudgetApiResponse>(`${this.API_URL}/budgets/${budgetId}`).subscribe({
+      next: (data) => {
+        const budget = Budget.create(data);
+        this.budgetStore.setSelectedBudget(budget);
+      },
+      error: (e) => {
+        console.error(e);
+        this.budgetStore.setSelectedBudget(null);
+        this.budgetStore.setError(e.error.message);
+      },
+    });
+  }
+
   createBudget(createBudgetDto: CreateBudgetDto) {
     this.budgetStore.setIsLoading(true);
     this.http.post<BudgetApiResponse>(`${this.API_URL}/budgets`, createBudgetDto).subscribe({

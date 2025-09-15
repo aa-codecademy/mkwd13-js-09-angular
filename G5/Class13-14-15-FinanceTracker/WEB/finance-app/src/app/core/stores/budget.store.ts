@@ -1,5 +1,5 @@
 import { signalStore, withState, withMethods, patchState, withComputed } from '@ngrx/signals';
-import { Budget } from '../models/budget.model';
+import { Budget, Transactions } from '../models/budget.model';
 import { computed } from '@angular/core';
 
 interface BudgetState {
@@ -40,6 +40,26 @@ export const BudgetStore = signalStore(
 
     setError: (error: string | null) => {
       patchState(store, { error, isLoading: false });
+    },
+
+    setSelectedBudget: (budget: Budget | null) => {
+      patchState(store, { selectedBudget: budget });
+    },
+
+    addTransactionToBudget: (transaction: Transactions) => {
+      const currentSelectedBudget = store.selectedBudget();
+
+      if (!currentSelectedBudget) return;
+
+      currentSelectedBudget.addTransaction(transaction);
+
+      const updatedBudgets = store
+        .budgets()
+        .map((budget) =>
+          budget.id() === currentSelectedBudget.id() ? currentSelectedBudget : budget
+        );
+
+      patchState(store, { budgets: updatedBudgets });
     },
   })),
   withComputed((store) => ({

@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { AuthResponse, LoginDto, User } from '../models/user.model';
+import { AuthResponse, LoginDto, User, CreateUserDto } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -41,6 +41,27 @@ export class AuthService {
       error: (error) => {
         this.error.set(error.error.message);
         console.error(error);
+        this.isLoading.set(false);
+      },
+    });
+  }
+
+  register(createUserDto: CreateUserDto) {
+    this.error.set(null);
+    this.isLoading.set(true);
+
+    this.http.post<User>(`${this.API_URL}/auth/register`, createUserDto).subscribe({
+      next: (data) => {
+        console.log('Register data:', data);
+
+        this.isLoading.set(false);
+        this.router.navigate(['/login']);
+      },
+
+      error: (err) => {
+        this.error.set(err.error.message);
+        this.isLoading.set(false);
+        console.error(err);
       },
     });
   }

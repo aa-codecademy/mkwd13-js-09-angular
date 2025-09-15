@@ -22,4 +22,8 @@ export class Budgets {
   navigateToCreateBudget() {
     this.router.navigate(['/budgets/create']);
   }
+
+  navigateToBudgetDetails(budgetId: number) {
+    this.router.navigate(['/budgets', budgetId]);
+  }
 }
