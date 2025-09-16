@@ -42,7 +42,8 @@ export class ReviewsService {
     this.apiService.fetchReviewById(reviewId).subscribe({
       next: (review) => {
         this.selectedReview.set(review);
-        // this.comments.set([])
+        this.comments.set([]);
+        this.getReviewComments(reviewId);
       },
       error: (err) =>
         this.notificationService.showToast(err.error.message, false),
