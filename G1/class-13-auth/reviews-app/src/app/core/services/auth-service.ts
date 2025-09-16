@@ -7,6 +7,7 @@ import {
   UserCredentials,
 } from '../../feature/auth/auth-model';
 import { NotificationsService } from './notifications-service';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -73,5 +74,23 @@ export class AuthService {
     this.userData.set(null);
     localStorage.removeItem('userData');
     this.router.navigate(['login']);
+  }
+
+  refreshAccessToken(refreshToken: string) {
+    return this.apiService.refreshAccessToken(refreshToken).pipe(
+      tap((response) => {
+        console.log('this is from the tap in the auth', response);
+        const token = response.headers.get('access-token');
+        const refreshToken = response.headers.get('refresh-token');
+
+        this.userData.update((prevData) => ({
+          ...prevData,
+          token,
+          refreshToken,
+        }));
+
+        this.saveUserInLocalStorage(this.userData());
+      }),
+    );
   }
 }
