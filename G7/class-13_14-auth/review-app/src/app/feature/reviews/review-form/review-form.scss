@@ -1,0 +1,19 @@
+form {
+  background-color: #d7dad5;
+  border-radius: 4px;
+  padding: 20px 30px;
+  width: fit-content;
+
+  .form-controls {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+  }
+
+  .form-error {
+    text-align: center;
+    color: rgb(203, 0, 0);
+    font-size: 20px;
+    padding: 20px 0;
+  }
+}

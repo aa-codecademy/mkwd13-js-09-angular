@@ -1,0 +1,29 @@
+.comment-form {
+  border-bottom: 2px solid rgb(205, 205, 205);
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+
+  textarea {
+    font-size: 16px;
+    background-color: white;
+    resize: vertical;
+  }
+
+  .form-btns {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    align-items: center;
+    font-size: 18px;
+    padding: 20px 0;
+  }
+
+  ::ng-deep {
+    .form-btns {
+      button {
+        background-color: var(--color-navy);
+        color: var(--bg-gray);
+      }
+    }
+  }
+}

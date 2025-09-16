@@ -1,0 +1,35 @@
+.comments-list {
+  list-style: none;
+  padding: 0;
+
+  ul {
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 15px;
+  }
+
+  .comment-item {
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+    background-color: rgba(179, 179, 179, 0.34);
+    border-radius: 4px;
+
+    em {
+      text-align: center;
+    }
+
+    .comment-info {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .info-date {
+      font-style: italic;
+      font-size: 12px;
+      text-align: right;
+      padding-top: 10px;
+      color: #2c3e50;
+    }
+  }
+}

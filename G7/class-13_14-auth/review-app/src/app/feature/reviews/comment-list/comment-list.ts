@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, input } from '@angular/core';
+import { ReviewComment } from '../review-model';
 
 @Component({
   selector: 'app-comment-list',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './comment-list.html',
-  styleUrl: './comment-list.scss'
+  styleUrl: './comment-list.scss',
 })
 export class CommentList {
-
+  comments = input.required<ReviewComment[]>();
 }

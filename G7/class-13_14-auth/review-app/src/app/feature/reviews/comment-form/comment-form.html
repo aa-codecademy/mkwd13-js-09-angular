@@ -1,1 +1,19 @@
-<p>comment-form works!</p>
+<div class="comment-form">
+  <form [formGroup]="commentForm" (ngSubmit)="onFormSubmit()">
+    <div class="form-group">
+      <textarea
+        rows="3"
+        placeholder="Add Comment"
+        formControlName="text"
+        class="form-control"
+        [maxlength]="maxLength"
+      ></textarea>
+      <div class="form-btns">
+        <div>
+          {{ commentForm.controls.text.value.length }} / {{ maxLength }}
+        </div>
+        <app-button text="Submit" type="submit" />
+      </div>
+    </div>
+  </form>
+</div>

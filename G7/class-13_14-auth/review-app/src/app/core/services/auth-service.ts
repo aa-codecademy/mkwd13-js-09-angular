@@ -6,6 +6,8 @@ import {
   User,
   UserCredentials,
 } from '../../feature/auth/auth-model';
+import { tap } from 'rxjs';
+import { NotificationsService } from './notifications-service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +15,7 @@ import {
 export class AuthService {
   private apiService = inject(AuthApiService);
   private router = inject(Router);
+  private notificationsService = inject(NotificationsService);
 
   constructor() {
     // Load any user info from localStorage (if the user was already logged in earlier).
@@ -44,8 +47,13 @@ export class AuthService {
         this.saveUserInLocalStorage(this.userData());
 
         this.router.navigate(['']);
+        this.notificationsService.showToast(
+          `You have been successfully logged in as ${this.userData().username}`,
+          true,
+        );
       },
-      error: (err) => console.log(err),
+      error: (err) =>
+        this.notificationsService.showToast(err.error.message, false),
     });
   }
 
@@ -73,5 +81,26 @@ export class AuthService {
     this.userData.set(null); // clear the userData signal
     localStorage.removeItem('userData'); // clear local storage
     this.router.navigate(['login']); // send user back to the login page
+  }
+
+  refreshAccessToken(refreshToken: string) {
+    return this.apiService.refreshAccessToken(refreshToken).pipe(
+      tap((response) => {
+        // Extract the new tokens from the response headers
+        const token = response.headers.get('access-token');
+        const refreshToken = response.headers.get('refresh-token');
+
+        // Update the current userData signal
+
+        this.userData.update((prevData) => ({
+          ...prevData,
+          token,
+          refreshToken,
+        }));
+
+        // So it persists the data on page refreshes
+        this.saveUserInLocalStorage(this.userData());
+      }),
+    );
   }
 }

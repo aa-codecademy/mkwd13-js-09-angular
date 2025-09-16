@@ -5,4 +5,10 @@
       <app-review-item [review]="review" />
     }
   </div>
+  @if (totalCount() >= 10) {
+    <app-pagination
+      [totalCount]="totalCount()"
+      (paginationOutput)="onPaginationOutput($event)"
+    />
+  }
 </section>

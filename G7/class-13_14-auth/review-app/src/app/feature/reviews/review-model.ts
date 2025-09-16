@@ -19,3 +19,28 @@ export interface GetReviewsRes {
   reviews: Review[];
   totalCount: number;
 }
+
+export interface ReviewComment {
+  id: number;
+  text: string;
+  added: string;
+  user: {
+    username: string;
+  };
+}
+
+export interface GetCommentsRes {
+  comments: ReviewComment[];
+  totalCount: number;
+}
+
+export interface AddReviewReq {
+  title: string;
+  poster: string;
+  director: string;
+  year: number;
+  genres: string;
+  author: string;
+  rating: number;
+  text: string;
+}

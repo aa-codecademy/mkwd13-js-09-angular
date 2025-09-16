@@ -6,8 +6,20 @@
   grid-template-columns: 1fr max-content;
   align-items: center;
 
-  .logo {
+  strong {
+    font-size: 18px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 45px;
+    font-weight: 300;
     padding: 20px;
+    cursor: pointer;
+  }
+
+  .logo {
+    padding: 20px 20px;
     margin-top: 5px;
     img {
       height: 60px;
@@ -36,7 +48,7 @@
         color: white;
         text-decoration: none;
         transition: 0.2s;
-        padding: 8px;
+        padding: 5px;
         border-radius: 4px;
       }
 

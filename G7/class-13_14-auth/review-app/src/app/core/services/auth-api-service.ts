@@ -41,4 +41,13 @@ export class AuthApiService {
       },
     });
   }
+
+  refreshAccessToken(refreshToken: string) {
+    return this.http.get(`${BASE_URL}/auth/refresh-token`, {
+      headers: {
+        'refresh-token': refreshToken,
+      },
+      observe: 'response',
+    });
+  }
 }

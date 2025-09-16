@@ -1,1 +1,7 @@
-<p>edit-review works!</p>
+<section class="container">
+  <h2>Edit Review</h2>
+  <app-review-form
+    [editReviewData]="selectedReview()"
+    (submitOutput)="onReviewUpdate($event)"
+  />
+</section>

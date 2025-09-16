@@ -1,0 +1,23 @@
+<div class="pagination">
+  <div class="items-per-page">
+    <select [(ngModel)]="itemsPerPage">
+      <option [ngValue]="10" selected>10</option>
+      <option [ngValue]="25">25</option>
+      <option [ngValue]="50">50</option>
+      <option [ngValue]="100">100</option>
+    </select>
+  </div>
+
+  <div class="pagination-container">
+    <button (click)="onChangePage('prev')" [disabled]="currentPage() === 1">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div>{{ currentPage() }} / {{ maxPages() }}</div>
+    <button
+      (click)="onChangePage('next')"
+      [disabled]="currentPage() === maxPages()"
+    >
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+</div>
