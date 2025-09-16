@@ -2,6 +2,11 @@ GET http://localhost:3000/api/
 
 ###
 
+GET http://localhost:3000/api/auth/logout
+refresh-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTY3NDAxLTJmMjctNDQwZS1hZjZiLWVjY2VkMWJjZDNmNSIsImlhdCI6MTc1ODA0NDY3NywiZXhwIjoxNzU4NjQ5NDc3fQ.w7mDbHoJ4GnMAcMfcNy9gJL0YoqhpafeBn0o7theBuY
+
+###
+
 POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 

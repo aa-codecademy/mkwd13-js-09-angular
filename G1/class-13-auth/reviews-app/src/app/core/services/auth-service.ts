@@ -6,6 +6,8 @@ import {
   User,
   UserCredentials,
 } from '../../feature/auth/auth-model';
+import { NotificationsService } from './notifications-service';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +15,7 @@ import {
 export class AuthService {
   private apiService = inject(AuthApiService);
   private router = inject(Router);
+  private notificationsService = inject(NotificationsService);
 
   userData = signal<User>(null);
 
@@ -24,6 +27,10 @@ export class AuthService {
     this.apiService.registerUser(req).subscribe({
       next: () => {
         console.log('user registered');
+        this.notificationsService.showToast(
+          'Successfully registered, please log in with your new account!',
+          true,
+        );
         this.router.navigate(['login']);
       },
       error: (err) => console.log(err),
@@ -42,7 +49,8 @@ export class AuthService {
 
         this.router.navigate(['']);
       },
-      error: (err) => console.log(err),
+      error: (err) =>
+        this.notificationsService.showToast(err.error.message, false),
     });
   }
 
@@ -66,5 +74,23 @@ export class AuthService {
     this.userData.set(null);
     localStorage.removeItem('userData');
     this.router.navigate(['login']);
+  }
+
+  refreshAccessToken(refreshToken: string) {
+    return this.apiService.refreshAccessToken(refreshToken).pipe(
+      tap((response) => {
+        console.log('this is from the tap in the auth', response);
+        const token = response.headers.get('access-token');
+        const refreshToken = response.headers.get('refresh-token');
+
+        this.userData.update((prevData) => ({
+          ...prevData,
+          token,
+          refreshToken,
+        }));
+
+        this.saveUserInLocalStorage(this.userData());
+      }),
+    );
   }
 }
